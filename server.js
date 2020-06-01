@@ -1,15 +1,18 @@
 const express = require("express");
 // const exphbs = require("express-handlebars");
+const bodyParser = require("body-parser");
 const app = express();
 
 // app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 // app.set("view engine", "handlebars");
 
-app.get("/", (req, res) => {
-  res.render("index", {
-    title: "Welcome Page",
-  });
-});
+// app.get("/", (req, res) => {
+//   res.render("index", {
+//     title: "Welcome Page",
+//   });
+// });
+
+app.use(bodyParser.json());
 
 // Serve static assets if in production
 // if (process.env.NODE_ENV === "production") {
