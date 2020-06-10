@@ -4,14 +4,13 @@ import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
   Container,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from "reactstrap";
 
-class AppNavbar extends Component {
+export class AppNavbar extends Component {
   state = {
     isOpen: false,
   };
@@ -22,25 +21,23 @@ class AppNavbar extends Component {
     });
   };
 
+  static propTypes = {};
+
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="sm" className="mb-5">
+        <Navbar color="dark" dark expand="sm" className="mb-5">
           <Container>
             <NavbarBrand href="/">
               Laboratório de Instrumentos Ambiental
             </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>Entrar</DropdownItem>
-                  <DropdownItem>Sobre Nós</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink href="https://github.com/morgixin">Github</NavLink>
+                </NavItem>
+              </Nav>
             </Collapse>
           </Container>
         </Navbar>
