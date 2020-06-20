@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 /**
  * @route   POST api/entries
  * @desc    Adicionar Nova Entrada
- * @access  Private
+ * @access  Public
  */
 router.post("/", (req, res) => {
   const newObs = new Obs({
@@ -31,8 +31,6 @@ router.post("/", (req, res) => {
     umid_min: req.body.umidMin,
     rad_solar: req.body.radSolar,
     chuva_ac_dia: req.body.chDia,
-    chuva_ac_semana: req.body.chSemana,
-    chuva_ac_mes: req.body.chMes,
     direc_vento: req.body.ventoDirecao,
     inten_vento: req.body.ventoInten,
   });

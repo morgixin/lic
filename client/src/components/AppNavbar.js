@@ -5,14 +5,23 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
+  // NavItem,
+  // NavLink,
   Container,
 } from "reactstrap";
+import EntryModal from "./EntryModal";
+import LoginModal from "./auth/LoginModal";
+import SigninModal from "./auth/SigninModal";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 export class AppNavbar extends Component {
   state = {
     isOpen: false,
+  };
+
+  static propTypes = {
+    auth: PropTypes.object.isRequired,
   };
 
   toggle = () => {
@@ -20,8 +29,6 @@ export class AppNavbar extends Component {
       isOpen: !this.state.isOpen,
     });
   };
-
-  static propTypes = {};
 
   render() {
     return (
@@ -34,9 +41,12 @@ export class AppNavbar extends Component {
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
-                <NavItem>
+                <LoginModal />
+                <SigninModal />
+                <EntryModal />
+                {/* <NavItem>
                   <NavLink href="https://github.com/morgixin">Github</NavLink>
-                </NavItem>
+                </NavItem> */}
               </Nav>
             </Collapse>
           </Container>
@@ -46,4 +56,8 @@ export class AppNavbar extends Component {
   }
 }
 
-export default AppNavbar;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, null)(AppNavbar);

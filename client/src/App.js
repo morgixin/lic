@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppNavbar from "./components/AppNavbar";
-import ObsModal from "./components/ObsModal";
+import ObsEntries from "./components/ObsEntries";
+import { Container } from "reactstrap";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -12,9 +13,9 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <AppNavbar />
-          <div className="app-main-content">
-            <ObsModal />
-          </div>
+          <Container>
+            <ObsEntries />
+          </Container>
         </div>
       </Provider>
     );

@@ -1,10 +1,12 @@
+import axios from "axios";
 import {
   GET_ENTRIES,
   ADD_ENTRY,
   DELETE_ENTRY,
   ENTRIES_LOADING,
 } from "../actions/types";
-import axios from "axios";
+// import { tokenConfig } from "./authActions";
+import { returnErrors } from "./errorActions";
 
 export const getEntries = () => (dispatch) => {
   dispatch(setEntriesLoading());
@@ -16,7 +18,9 @@ export const getEntries = () => (dispatch) => {
         payload: res.data,
       })
     )
-    .catch((err) => console.log(err));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 export const addEntry = (entry) => (dispatch) => {
@@ -28,16 +32,23 @@ export const addEntry = (entry) => (dispatch) => {
         payload: res.data,
       })
     )
-    .catch((err) => console.log(err));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 export const deleteEntry = (id) => (dispatch) => {
-  axios.delete(`/api/entries/${id}`).then((res) =>
-    dispatch({
-      type: DELETE_ENTRY,
-      payload: id,
-    })
-  );
+  axios
+    .delete(`/api/entries/${id}`)
+    .then((res) =>
+      dispatch({
+        type: DELETE_ENTRY,
+        payload: id,
+      })
+    )
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 export const setEntriesLoading = () => {

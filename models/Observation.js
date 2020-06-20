@@ -47,16 +47,6 @@ const ObsSchema = new Schema({
     required: true,
     min: 0,
   },
-  chuva_ac_semana: {
-    type: mongoose.Types.Decimal128,
-    required: true,
-    min: 0,
-  },
-  chuva_ac_mes: {
-    type: mongoose.Types.Decimal128,
-    required: true,
-    min: 0,
-  },
   direc_vento: {
     type: String,
     required: true,
@@ -69,4 +59,4 @@ const ObsSchema = new Schema({
   },
 });
 
-module.exports = User = mongoose.model("obs", ObsSchema);
+module.exports = Obs = mongoose.model("entry", ObsSchema);

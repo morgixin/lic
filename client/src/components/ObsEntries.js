@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Container, ListGroup, ListGroupItem, Table } from "reactstrap";
+import { Container, ListGroup, ListGroupItem } from "reactstrap";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { connect } from "react-redux";
-import { getEntries, deleteEntry } from "../actions/obsActions";
+import { getEntries } from "../actions/obsActions";
 import PropTypes from "prop-types";
 
-export class Observations extends Component {
+export class Entries extends Component {
   static propTypes = {
     getEntries: PropTypes.func.isRequired,
     entry: PropTypes.object.isRequired,
@@ -19,10 +20,10 @@ export class Observations extends Component {
     return (
       <Container>
         <ListGroup>
-          <TransitionGroup className="entry-list">
+          <TransitionGroup className="entries-list">
             {entries.map(({ _id, hora_leitura }) => (
               <CSSTransition key={_id} timeout={250} classNames="fade">
-                <ListGroupItem></ListGroupItem>
+                <ListGroupItem>{hora_leitura}</ListGroupItem>
               </CSSTransition>
             ))}
           </TransitionGroup>
@@ -37,6 +38,4 @@ const mapStateToProps = (state) => ({
   //   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { getEntries, deleteEntry })(
-  Observations
-);
+export default connect(mapStateToProps, { getEntries })(Entries);

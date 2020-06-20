@@ -53,6 +53,7 @@ export const register = ({ nome, apelido, matricula, senha }) => (dispatch) => {
       })
     )
     .catch((err) => {
+      console.log(err);
       dispatch(
         returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
       );
@@ -89,6 +90,8 @@ export const login = ({ apelido, senha }) => (dispatch) => {
       dispatch({
         type: LOGIN_FAIL,
       });
+
+      console.log(err);
     });
 };
 
@@ -107,7 +110,7 @@ export const tokenConfig = (getState) => {
   // Headers
   const config = {
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
     },
   };
 

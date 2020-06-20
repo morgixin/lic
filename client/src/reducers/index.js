@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
-import obsReducer from "./entriesReducers";
+import entryReducer from "./entryReducer";
+import authReducer from "./authReducer";
+import errorReducer from "./errorReducer";
 
 export default combineReducers({
-  obs: obsReducer,
+  entry: entryReducer,
+  error: errorReducer,
+  auth: authReducer,
 });
