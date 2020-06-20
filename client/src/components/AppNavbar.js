@@ -44,9 +44,6 @@ export class AppNavbar extends Component {
                 <LoginModal />
                 <SigninModal />
                 <EntryModal />
-                {/* <NavItem>
-                  <NavLink href="https://github.com/morgixin">Github</NavLink>
-                </NavItem> */}
               </Nav>
             </Collapse>
           </Container>
