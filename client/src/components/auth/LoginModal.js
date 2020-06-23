@@ -53,6 +53,7 @@ class LoginModal extends Component {
   }
 
   toggle = () => {
+    // Limpa os erros e fecha o modal
     this.props.clearErrors();
     this.setState({
       modal: !this.state.modal,

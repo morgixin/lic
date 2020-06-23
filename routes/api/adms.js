@@ -7,16 +7,16 @@ const jwt = require("jsonwebtoken");
 // Modelo de userinistrador
 const User = require("../../models/User");
 
-/**
- * @route   GET api/users
- * @desc    Acessar Todos os Usuários
- * @access  Public
- */
-router.get("/", (req, res) => {
-  User.find()
-    .sort({ nome: -1 })
-    .then((users) => res.json(users));
-});
+// /**
+//  * @route   GET api/users
+//  * @desc    Acessar Todos os Usuários
+//  * @access  Public
+//  */
+// router.get("/", (req, res) => {
+//   User.find()
+//     .sort({ nome: -1 })
+//     .then((users) => res.json(users));
+// });
 
 /**
  * @route   POST api/users
