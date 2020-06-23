@@ -17,7 +17,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get("/api/auth/adms", tokenConfig(getState))
+    .get("/api/auth/user", tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: USER_LOADED,
@@ -45,7 +45,7 @@ export const register = ({ nome, apelido, matricula, senha }) => (dispatch) => {
   const body = JSON.stringify({ nome, apelido, matricula, senha });
 
   axios
-    .post("/api/adms", body, config)
+    .post("/api/users", body, config)
     .then((res) =>
       dispatch({
         type: REGISTER_SUCCESS,
@@ -90,8 +90,6 @@ export const login = ({ apelido, senha }) => (dispatch) => {
       dispatch({
         type: LOGIN_FAIL,
       });
-
-      console.log(err);
     });
 };
 

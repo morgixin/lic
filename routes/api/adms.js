@@ -4,23 +4,23 @@ const bcrypt = require("bcryptjs");
 const config = require("config");
 const jwt = require("jsonwebtoken");
 
-// Modelo de Administrador
-const Adm = require("../../models/Adm");
+// Modelo de userinistrador
+const User = require("../../models/User");
 
 /**
- * @route   GET api/adms
- * @desc    Acessar Todos os Administradores
+ * @route   GET api/users
+ * @desc    Acessar Todos os Usuários
  * @access  Public
  */
 router.get("/", (req, res) => {
-  Adm.find()
+  User.find()
     .sort({ nome: -1 })
-    .then((adms) => res.json(adms));
+    .then((users) => res.json(users));
 });
 
 /**
- * @route   POST api/adms
- * @desc    Criar Novo Administrador
+ * @route   POST api/users
+ * @desc    Criar Novo Usuário
  * @access  Private
  */
 router.post("/", (req, res) => {
@@ -31,13 +31,13 @@ router.post("/", (req, res) => {
     return res.status(400).json({ msg: "Preencha todos os campos" });
   }
 
-  // Checando existência do adm
-  Adm.findOne({ apelido }).then((adm) => {
-    if (adm) {
+  // Checando existência do user
+  User.findOne({ apelido }).then((user) => {
+    if (user) {
       return res.status(400).json({ msg: "Esse usuário já existe" });
     }
 
-    const newAdm = new Adm({
+    const newUser = new User({
       nome,
       apelido,
       matricula,
@@ -46,12 +46,12 @@ router.post("/", (req, res) => {
 
     // Criando salt & hash
     bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(newAdm.senha, salt, (err, hash) => {
+      bcrypt.hash(newUser.senha, salt, (err, hash) => {
         if (err) throw err;
-        newAdm.senha = hash;
-        newAdm.save().then((adm) => {
+        newUser.senha = hash;
+        newUser.save().then((user) => {
           jwt.sign(
-            { id: adm.id },
+            { id: user.id },
             config.get("jwtSecret"),
             {
               expiresIn: 31556952,
@@ -60,11 +60,11 @@ router.post("/", (req, res) => {
               if (err) throw err;
               res.json({
                 token,
-                adm: {
-                  id: adm.id,
-                  nome: adm.nome,
-                  apelido: adm.apelido,
-                  matricula: adm.matricula,
+                user: {
+                  id: user.id,
+                  nome: user.nome,
+                  apelido: user.apelido,
+                  matricula: user.matricula,
                 },
               });
             }

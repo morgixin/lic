@@ -19,12 +19,10 @@ const ObsSchema = new Schema({
   },
   temp_max: {
     type: mongoose.Types.Decimal128,
-    required: true,
     min: 0,
   },
   temp_min: {
     type: mongoose.Types.Decimal128,
-    required: true,
     min: 0,
   },
   umid_rel: {
@@ -34,7 +32,6 @@ const ObsSchema = new Schema({
   },
   umid_min: {
     type: Number,
-    required: true,
     min: 0,
   },
   rad_solar: {
@@ -44,7 +41,6 @@ const ObsSchema = new Schema({
   },
   chuva_ac_dia: {
     type: mongoose.Types.Decimal128,
-    required: true,
     min: 0,
   },
   direc_vento: {

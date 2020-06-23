@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // Modelo de observação
-const Obs = require("../../models/Observation");
+const Entry = require("../../models/Entry");
 
 /**
  * @route   GET api/entries
@@ -10,9 +10,9 @@ const Obs = require("../../models/Observation");
  * @access  Public
  */
 router.get("/", (req, res) => {
-  Obs.find()
+  Entry.find()
     .sort({ hora_leitura: -1 })
-    .then((obs) => res.json(obs));
+    .then((entry) => res.json(entry));
 });
 
 /**
@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
  * @access  Public
  */
 router.post("/", (req, res) => {
-  const newObs = new Obs({
+  const newEntry = new Entry({
     hora_leitura: req.body.horaLeitura,
     pressao_atm: req.body.pressaoAtm,
     temp_ar: req.body.tempAr,
@@ -35,7 +35,7 @@ router.post("/", (req, res) => {
     inten_vento: req.body.ventoInten,
   });
 
-  newObs.save().then((obs) => res.json(obs));
+  newEntry.save().then((entry) => res.json(entry));
 });
 
 /**
