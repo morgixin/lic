@@ -38,10 +38,6 @@ export class LoginModal extends Component {
     if (error !== prevProps.error) {
       if (error.id === "LOGIN_FAIL") {
         this.setState({ msg: error.msg.msg });
-        if (error.msg.msg == "User does not exist")
-          this.setState({ msg: "Esse usuário não existe" });
-        if (error.msg.msg == "invalid credentials")
-          this.setState({ msg: "Nome ou senha não conferem" });
       } else {
         this.setState({ msg: null });
       }

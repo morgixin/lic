@@ -17,19 +17,20 @@ router.post("/", (req, res) => {
 
   // Simple Validation
   if (!apelido || !senha) {
-    return res.status(400).json({ msg: "Please enter all fields" });
+    return res.status(400).json({ msg: "Preencha todos os campos" });
   }
 
   // Check for existing user
   User.findOne({ apelido }).then((user) => {
     if (!user) {
       // if there's a user
-      return res.status(400).json({ msg: "User does not exist" });
+      return res.status(400).json({ msg: "Usuário não existente" });
     }
 
     // Validate senha
     bcrypt.compare(senha, user.senha).then((isMatch) => {
-      if (!isMatch) return res.status(400).json({ msg: "invalid credentials" });
+      if (!isMatch)
+        return res.status(400).json({ msg: "Usuário ou senha incorretos" });
       jwt.sign(
         { id: user.id },
         config.get("jwtSecret"),
