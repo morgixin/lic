@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, ListGroup, ListGroupItem } from "reactstrap";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { TransitionGroup } from "react-transition-group";
 import { connect } from "react-redux";
 import { getEntries } from "../actions/obsActions";
 import PropTypes from "prop-types";
@@ -21,7 +21,7 @@ export class Entries extends Component {
     const entries = this.props.entry;
 
     return entries.map((entry) => (
-      <Container style="display: flex; width: 686px; flex-direction: row; justify-content: space-between">
+      <Container className="entry-list">
         <ListGroupItem>
           {/* {new Intl.DateTimeFormat("pt-BR", {
             month: "long",

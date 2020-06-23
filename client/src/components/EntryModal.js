@@ -40,7 +40,7 @@ export class EntryModal extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { error, isAuthenticated } = this.props;
+    const { error } = this.props;
     const added = this.state.added;
 
     if (error !== prevProps.error) {

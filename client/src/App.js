@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppNavbar from "./components/AppNavbar";
-import EntryList from "./components/EntryList";
+// import EntryList from "./components/EntryList";
 import { Container } from "reactstrap";
 import { loadUser } from "./actions/authActions";
 import LoadUser from "./components/LoadUser";
