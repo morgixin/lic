@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-export class LoadUser extends Component {
+class LoadUser extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
   };

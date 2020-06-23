@@ -53,7 +53,6 @@ export const register = ({ nome, apelido, matricula, senha }) => (dispatch) => {
       })
     )
     .catch((err) => {
-      console.log(err);
       dispatch(
         returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
       );

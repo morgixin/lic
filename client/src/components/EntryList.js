@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { getEntries } from "../actions/obsActions";
 import PropTypes from "prop-types";
 
-export class Entries extends Component {
+class Entries extends Component {
   state = {};
 
   static propTypes = {

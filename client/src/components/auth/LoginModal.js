@@ -17,7 +17,7 @@ import PropTypes from "prop-types";
 import { login } from "../../actions/authActions";
 import { clearErrors } from "../../actions/errorActions";
 
-export class LoginModal extends Component {
+class LoginModal extends Component {
   state = {
     modal: false,
     apelido: "",
@@ -36,6 +36,7 @@ export class LoginModal extends Component {
     const { error, isAuthenticated } = this.props;
 
     if (error !== prevProps.error) {
+      // Checando se há algum erro
       if (error.id === "LOGIN_FAIL") {
         this.setState({ msg: error.msg.msg });
       } else {

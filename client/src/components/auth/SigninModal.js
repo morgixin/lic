@@ -17,7 +17,7 @@ import { register } from "../../actions/authActions";
 import { clearErrors } from "../../actions/errorActions";
 import PropTypes from "prop-types";
 
-export class SigninModal extends Component {
+class SigninModal extends Component {
   state = {
     modal: false,
     nome: "",

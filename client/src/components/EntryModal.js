@@ -16,7 +16,7 @@ import { addEntry } from "../actions/obsActions";
 import { clearErrors } from "../actions/errorActions";
 import PropTypes from "prop-types";
 
-export class EntryModal extends Component {
+class EntryModal extends Component {
   state = {
     modal: false,
     added: false,

@@ -16,7 +16,7 @@ import Logout from "./auth/Logout";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-export class AppNavbar extends Component {
+class AppNavbar extends Component {
   state = {
     isOpen: false,
   };
