@@ -56,7 +56,13 @@ class AppNavbar extends Component {
     );
     return (
       <div>
-        <Navbar color="light" light expand="sm" className="mb-5">
+        <Navbar
+          color="light"
+          light
+          expand="sm"
+          className="mb-4"
+          style={{ borderBottom: "6px solid lightblue" }}
+        >
           <Container>
             <NavbarBrand href="/">
               Laboratório de Instrumentos Ambiental

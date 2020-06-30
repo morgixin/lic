@@ -21,21 +21,58 @@ router.get("/", (req, res) => {
  * @access  Public
  */
 router.post("/", (req, res) => {
-  const newEntry = new Entry({
-    hora_leitura: req.body.horaLeitura,
-    pressao_atm: req.body.pressaoAtm,
-    temp_ar: req.body.tempAr,
-    temp_max: req.body.tempMax,
-    temp_min: req.body.tempMin,
-    umid_rel: req.body.umidRel,
-    umid_min: req.body.umidMin,
-    rad_solar: req.body.radSolar,
-    chuva_ac_dia: req.body.chDia,
-    direc_vento: req.body.ventoDirecao,
-    inten_vento: req.body.ventoInten,
-  });
+  const {
+    hora_leitura,
+    pressao_atm,
+    temp_ar,
+    temp_min,
+    temp_max,
+    umid_rel,
+    umid_min,
+    rad_solar,
+    chuva_ac_dia,
+    inten_vento,
+    direc_vento,
+  } = req.body;
 
-  newEntry.save().then((entry) => res.json(entry));
+  // // Validando se todos os campos foram preenchidos
+  // if (
+  //   !hora_leitura ||
+  //   !pressao_atm ||
+  //   !temp_ar ||
+  //   !temp_min ||
+  //   !temp_max ||
+  //   !umid_rel ||
+  //   !umid_min ||
+  //   !rad_solar ||
+  //   !chuva_ac_dia ||
+  //   !inten_vento ||
+  //   !direc_vento
+  // )
+  //   return res.status(400).json({ msg: "Preencha todos os campos" });
+
+  Entry.findOne({ hora_leitura }).then((isMatch) => {
+    if (isMatch)
+      return res
+        .status(400)
+        .json({ msg: "Uma entrada com essa data já existe" });
+    else {
+      const newEntry = new Entry({
+        hora_leitura,
+        pressao_atm,
+        temp_ar,
+        temp_min,
+        temp_max,
+        umid_rel,
+        umid_min,
+        rad_solar,
+        chuva_ac_dia,
+        inten_vento,
+        direc_vento,
+      });
+      newEntry.save().then((entry) => res.json(entry));
+    }
+  });
 });
 
 /**

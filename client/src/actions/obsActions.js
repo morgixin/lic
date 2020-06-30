@@ -4,6 +4,7 @@ import {
   ADD_ENTRY,
   DELETE_ENTRY,
   ENTRIES_LOADING,
+  ADD_ENTRY_FAIL,
 } from "../actions/types";
 // import { tokenConfig } from "./authActions";
 import { returnErrors } from "./errorActions";
@@ -32,9 +33,14 @@ export const addEntry = (entry) => (dispatch) => {
         payload: res.data,
       })
     )
-    .catch((err) =>
-      dispatch(returnErrors(err.response.data, err.response.status))
-    );
+    .catch((err) => {
+      dispatch(
+        returnErrors(err.response.data, err.response.status, "ADD_ENTRY_FAIL")
+      );
+      dispatch({
+        type: ADD_ENTRY_FAIL,
+      });
+    });
 };
 
 export const deleteEntry = (id) => (dispatch) => {

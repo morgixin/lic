@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, ListGroup, ListGroupItem } from "reactstrap";
+import { Container, ListGroup, ListGroupItem, Table } from "reactstrap";
 import { TransitionGroup } from "react-transition-group";
 import { connect } from "react-redux";
 import { getEntries } from "../actions/obsActions";
@@ -18,43 +18,53 @@ class Entries extends Component {
   }
 
   rows = () => {
-    const entries = this.props.entry;
+    const { entries } = this.props.entry;
+    var dd, mm;
 
-    return entries.map((entry) => (
-      <Container className="entry-list">
-        <ListGroupItem>
-          {/* {new Intl.DateTimeFormat("pt-BR", {
-            month: "long",
+    const listEntries = entries.map((entry) => (
+      <tr key={entry._id}>
+        <td>
+          {new Intl.DateTimeFormat("pt-BR", {
+            month: "2-digit",
             day: "2-digit",
-          }).format(entry.hora_leitura)} */}
-          {entry.hora_leitura.toLocaleDateString()}
-        </ListGroupItem>
-        <ListGroupItem>
-          {Number(entry.temp_max)}/{Number(entry.temp_min)}ºC
-        </ListGroupItem>
-        <ListGroupItem>
-          {Number(entry.umid_rel)}/{entry.Number(entry.umid_min)}%
-        </ListGroupItem>
-        <ListGroupItem>{Number(entry.chuva_ac_dia)}mm</ListGroupItem>
-        <ListGroupItem>
-          {Number(entry.inten_vento)}km/h
-          {entry.direc_vento}
-        </ListGroupItem>
-        <ListGroupItem>{Number(entry.pressao_atm)}hPa</ListGroupItem>
-        <ListGroupItem>{Number(entry.rad_solar)}W/m2</ListGroupItem>
-      </Container>
+          }).format(new Date(entry.hora_leitura))}
+        </td>
+        <td>
+          {entry.temp_max}/{entry.temp_min} ºC
+        </td>
+        <td>
+          {entry.umid_rel}/{entry.umid_min}%
+        </td>
+        <td>{entry.chuva_ac_dia} mm</td>
+        <td>
+          {entry.inten_vento} km/h {entry.direc_vento}
+        </td>
+        <td>{entry.pressao_atm} hPa</td>
+        <td>{entry.rad_solar} W/m2</td>
+      </tr>
     ));
+
+    return listEntries;
   };
 
   render() {
     return (
-      <Container>
-        <ListGroup>
-          <TransitionGroup className="entries-list">
-            {this.rows}
-          </TransitionGroup>
-        </ListGroup>
-      </Container>
+      <Table style={{ width: "800px", marginTop: "2rem" }}>
+        <thead style={{}}>
+          <tr className="table-title-simple">
+            <th>Data</th>
+            <th>Temp Máx/Min</th>
+            <th>Umidade Rel/Mín</th>
+            <th>Chuva Acumulada 24h</th>
+            <th>Vento</th>
+            <th>Pressão</th>
+            <th>Radiação Solar</th>
+          </tr>
+        </thead>
+        {/* <TransitionGroup className="entries-list"> */}
+        <tbody>{this.rows()}</tbody>
+        {/* </TransitionGroup> */}
+      </Table>
     );
   }
 }

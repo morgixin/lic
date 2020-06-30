@@ -3,6 +3,7 @@ import {
   ADD_ENTRY,
   DELETE_ENTRY,
   ENTRIES_LOADING,
+  ADD_ENTRY_FAIL,
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +28,10 @@ export default function (state = initialState, action) {
       return {
         ...state,
         entries: state.entries.filter((entry) => entry._id !== action.payload),
+      };
+    case ADD_ENTRY_FAIL:
+      return {
+        ...state,
       };
     case ENTRIES_LOADING:
       return {

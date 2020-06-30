@@ -10,6 +10,7 @@ import {
   Label,
   Input,
   NavLink,
+  Alert,
 } from "reactstrap";
 import { connect } from "react-redux";
 import { addEntry } from "../actions/obsActions";
@@ -20,21 +21,23 @@ class EntryModal extends Component {
   state = {
     modal: false,
     added: false,
-    horaLeitura: Date,
-    pressaoAtm: 0,
-    tempAr: 0,
-    tempMin: 0,
-    tempMax: 0,
-    umidRel: 0,
-    umidMin: 0,
-    radGlobal: 0,
-    chDia: 0,
-    ventoInten: 0,
-    ventoDirecao: "",
+    hora_leitura: 0,
+    pressao_atm: 0,
+    temp_ar: 0,
+    temp_min: 0,
+    temp_max: 0,
+    umid_rel: 0,
+    umid_min: 0,
+    rad_solar: 0,
+    chuva_ac_dia: 0,
+    inten_vento: 0,
+    direc_vento: "",
+    msg: null,
   };
 
   static propTypes = {
     isAuthenticated: PropTypes.bool,
+    addEntry: PropTypes.func.isRequired,
     error: PropTypes.object.isRequired,
     clearErrors: PropTypes.func.isRequired,
   };
@@ -54,7 +57,7 @@ class EntryModal extends Component {
 
     // If authenticated, close modal
     if (this.state.modal) {
-      if (added) {
+      if (error.msg.msg === null) {
         this.toggle();
       }
     }
@@ -62,7 +65,6 @@ class EntryModal extends Component {
 
   toggle = () => {
     // Clear errors
-    // console.log(typeof this.props.clearErrors);
     this.props.clearErrors();
     this.setState({
       modal: !this.state.modal,
@@ -77,30 +79,30 @@ class EntryModal extends Component {
     e.preventDefault();
 
     const {
-      horaLeitura,
-      pressaoAtm,
-      tempAr,
-      tempMin,
-      tempMax,
-      umidRel,
-      umidMin,
-      radGlobal,
-      chDia,
-      ventoInten,
-      ventoDirecao,
+      hora_leitura,
+      pressao_atm,
+      temp_ar,
+      temp_min,
+      temp_max,
+      umid_rel,
+      umid_min,
+      rad_solar,
+      chuva_ac_dia,
+      inten_vento,
+      direc_vento,
     } = this.state;
     const newEntry = {
-      horaLeitura,
-      pressaoAtm,
-      tempAr,
-      tempMin,
-      tempMax,
-      umidRel,
-      umidMin,
-      radGlobal,
-      chDia,
-      ventoInten,
-      ventoDirecao,
+      hora_leitura,
+      pressao_atm,
+      temp_ar,
+      temp_min,
+      temp_max,
+      umid_rel,
+      umid_min,
+      rad_solar,
+      chuva_ac_dia,
+      inten_vento,
+      direc_vento,
     };
 
     // Adiciona a entrada pelo addEntry
@@ -115,113 +117,121 @@ class EntryModal extends Component {
         </NavLink>
 
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Inserir observação</ModalHeader>
+          <ModalHeader toggle={this.toggle}>
+            Inserir nova observação
+          </ModalHeader>
           <ModalBody>
+            {this.state.msg ? (
+              <Alert color="danger">{this.state.msg}</Alert>
+            ) : null}
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
                 <Label className="lead">Horário local da leitura</Label>
-                <Input
-                  type="datetime"
-                  name="horaLeitura"
-                  id="hora-leitura"
-                  placeholder="15jan2019/14:30h"
-                  onChange={this.onChange}
-                />
-
+                <Input type="datetime-local" name="hora_leitura" required />
                 <Label className="lead">Pressão atmosférica</Label>
                 <Input
                   type="text"
-                  name="pressaoAtm"
+                  name="pressao_atm"
                   id="pressao-atm"
                   placeholder="1012.9"
                   onChange={this.onChange}
+                  required
                 />
                 <Label className="lead">Temperaturas (ar/min/max)</Label>
                 <Input
                   type="text"
-                  name="tempAr"
+                  name="temp_ar"
                   id="temp-ar"
                   className="temperatura"
                   placeholder="°C ar"
                   onChange={this.onChange}
+                  required
                 />
                 <Input
                   type="text"
-                  name="tempMin"
+                  name="temp_min"
                   id="temp-min"
                   className="temperatura"
                   placeholder="mínima"
                   onChange={this.onChange}
+                  required
                 />
                 <Input
                   type="text"
-                  name="tempMax"
+                  name="temp_max"
                   id="temp-max"
                   className="temperatura"
                   placeholder="máxima"
                   onChange={this.onChange}
+                  required
                 />
                 <Label className="lead">Umidade (relativa/mín)</Label>
                 <Input
                   type="number"
-                  name="umidRel"
+                  name="umid_rel"
                   id="umid-rel"
                   placeholder="relativa"
                   onChange={this.onChange}
+                  required
                 />
                 <Input
                   type="number"
-                  name="umidMin"
+                  name="umid_min"
                   id="umid-min"
                   placeholder="mínima"
                   onChange={this.onChange}
+                  required
                 />
                 <Label className="lead">Radiação solar global</Label>
                 <Input
                   type="number"
-                  name="radGlobal"
+                  name="rad_solar"
                   id="rad-global"
                   placeholder="399"
                   onChange={this.onChange}
+                  required
                 />
                 <Label className="lead">Chuva acumulada dia</Label>
                 <Input
                   type="text"
-                  name="chDia"
+                  name="chuva_ac_dia"
                   id="ch-ac-dia"
                   placeholder="10"
+                  required
                 />
                 <Label className="lead">Vento (intensidade/direção)</Label>
                 <Input
                   type="text"
-                  name="ventoInten"
+                  name="inten_vento"
                   id="vento-inten"
                   placeholder="intensidade"
                   onChange={this.onChange}
+                  required
                 />
                 <Input
                   type="select"
-                  name="ventoDirecao"
+                  name="direc_vento"
                   id="vento-dir"
                   placeholder="direção"
                   onChange={this.onChange}
+                  required
                 >
-                  <option value="opt-E">E: este/leste</option>
-                  <option value="opt-N">N: norte</option>
-                  <option value="opt-O">O: oeste</option>
-                  <option value="opt-S">S: sul</option>
-                  <option value="opt-NE">NE: nordeste</option>
-                  <option value="opt-NO">NO: noroeste</option>
-                  <option value="opt-SE">SE: sudeste</option>
-                  <option value="opt-SO">SO: sudoeste</option>
-                  <option value="opt-ENE">ENE: lés-nordeste</option>
-                  <option value="opt-ESE">ESE: lés-sudeste</option>
-                  <option value="opt-SSE">SSE: sul-sudeste</option>
-                  <option value="opt-NNE">NNE: nor-nordeste</option>
-                  <option value="opt-NNO">NNO: nor-noroeste</option>
-                  <option value="opt-SSO">SSO: sul-sudoeste</option>
-                  <option value="opt-OSO">OSO: oés-sudoeste</option>
-                  <option value="opt-ONO">ONO: oés-noroeste</option>
+                  <option value="E">E: este/leste</option>
+                  <option value="N">N: norte</option>
+                  <option value="O">O: oeste</option>
+                  <option value="S">S: sul</option>
+                  <option value="NE">NE: nordeste</option>
+                  <option value="NO">NO: noroeste</option>
+                  <option value="SE">SE: sudeste</option>
+                  <option value="SO">SO: sudoeste</option>
+                  <option value="ENE">ENE: lés-nordeste</option>
+                  <option value="ESE">ESE: lés-sudeste</option>
+                  <option value="SSE">SSE: sul-sudeste</option>
+                  <option value="NNE">NNE: nor-nordeste</option>
+                  <option value="NNO">NNO: nor-noroeste</option>
+                  <option value="SSO">SSO: sul-sudoeste</option>
+                  <option value="OSO">OSO: oés-sudoeste</option>
+                  <option value="ONO">ONO: oés-noroeste</option>
                 </Input>
                 <Button style={{ marginTop: "2rem" }} color="secondary" block>
                   Gravar dados
@@ -236,7 +246,7 @@ class EntryModal extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  entry: state.entry,
+  // entry: state.entry,
   error: state.error,
   isAuthenticated: state.auth.isAuthenticated,
 });
