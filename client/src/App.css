@@ -1,13 +1,13 @@
-body {
-  /* background-color: lightcyan; */
-}
-
-.list-group-item {
+/* .list-group-item {
   background-color: transparent;
   border: 0;
   border-bottom: 1px solid black;
-}
+} */
 
 .table-title-simple * {
   font-weight: 400;
+}
+
+.main-table-week * {
+  max-width: 100px;
 }

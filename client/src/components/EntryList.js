@@ -49,7 +49,10 @@ class Entries extends Component {
 
   render() {
     return (
-      <Table style={{ width: "800px", marginTop: "2rem" }}>
+      <Table
+        className="main-table-week"
+        style={{ maxWidth: "800px", marginTop: "2rem" }}
+      >
         <thead style={{}}>
           <tr className="table-title-simple">
             <th>Data</th>
