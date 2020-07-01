@@ -2,11 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const config = require("config");
+const Cors = require("cors");
 
 const app = express();
 
 // bodyParser Middleware, incluso no Express
 app.use(express.json());
+app.use(Cors());
 
 // Configuração do DB
 const db = config.get("mongoURI");
@@ -29,7 +31,7 @@ app.use("/api/auth", require("./routes/api/auth"));
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
-  app.use("/static", express.static("client/build"));
+  app.use("/static", express.static(path.join(__dirname, "client/build")));
 
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
