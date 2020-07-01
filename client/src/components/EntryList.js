@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Container, ListGroup, ListGroupItem, Table } from "reactstrap";
-import { TransitionGroup } from "react-transition-group";
+import { Container, Table } from "reactstrap";
+// import { TransitionGroup } from "react-transition-group";
 import { connect } from "react-redux";
 import { getEntries } from "../actions/obsActions";
 import PropTypes from "prop-types";
@@ -19,7 +19,6 @@ class Entries extends Component {
 
   rows = () => {
     const { entries } = this.props.entry;
-    var dd, mm;
 
     const listEntries = entries.map((entry) => (
       <tr key={entry._id}>

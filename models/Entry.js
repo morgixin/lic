@@ -55,4 +55,4 @@ const EntrySchema = new Schema({
   },
 });
 
-module.exports = Obs = mongoose.model("entry", EntrySchema);
+module.exports = Entry = mongoose.model("entry", EntrySchema);
