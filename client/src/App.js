@@ -21,7 +21,8 @@ class App extends Component {
         <div className="App">
           {/* <AppNavbar /> */}
           <Container>
-            <LoadUser />
+            {console.log("hey")}
+            {/* <LoadUser /> */}
             {/* <EntryList /> */}
           </Container>
         </div>
