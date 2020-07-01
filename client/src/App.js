@@ -18,7 +18,7 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <AppNavbar />
-          <Container /*style={{ marginLeft: "9rem" }}*/>
+          <Container>
             <LoadUser />
             <EntryList />
           </Container>
