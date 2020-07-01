@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container, Table } from "reactstrap";
-// import { TransitionGroup } from "react-transition-group";
 import { connect } from "react-redux";
 import { getEntries } from "../actions/obsActions";
 import PropTypes from "prop-types";
@@ -48,25 +47,25 @@ class Entries extends Component {
 
   render() {
     return (
-      <Table
-        className="main-table-week"
-        style={{ maxWidth: "800px", marginTop: "2rem" }}
-      >
-        <thead style={{}}>
-          <tr className="table-title-simple">
-            <th>Data</th>
-            <th>Temp Máx/Min</th>
-            <th>Umidade Rel/Mín</th>
-            <th>Chuva Acumulada 24h</th>
-            <th>Vento</th>
-            <th>Pressão</th>
-            <th>Radiação Solar</th>
-          </tr>
-        </thead>
-        {/* <TransitionGroup className="entries-list"> */}
-        <tbody>{this.rows()}</tbody>
-        {/* </TransitionGroup> */}
-      </Table>
+      <Container>
+        <Table
+          className="main-table-week"
+          style={{ maxWidth: "800px", marginTop: "2rem" }}
+        >
+          <thead style={{}}>
+            <tr className="table-title-simple">
+              <th>Data</th>
+              <th>Temp Máx/Min</th>
+              <th>Umidade Rel/Mín</th>
+              <th>Chuva Acumulada 24h</th>
+              <th>Vento</th>
+              <th>Pressão</th>
+              <th>Radiação Solar</th>
+            </tr>
+          </thead>
+          <tbody>{this.rows()}</tbody>
+        </Table>
+      </Container>
     );
   }
 }

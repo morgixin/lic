@@ -6,7 +6,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  // NavLink,
   Container,
 } from "reactstrap";
 import EntryModal from "./EntryModal";
