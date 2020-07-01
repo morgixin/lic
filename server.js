@@ -2,13 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const config = require("config");
-const Cors = require("cors");
 
 const app = express();
 
 // bodyParser Middleware, incluso no Express
 app.use(express.json());
-app.use(Cors());
 
 // Configuração do DB
 const db = config.get("mongoURI");
