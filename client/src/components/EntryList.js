@@ -5,8 +5,6 @@ import { getEntries } from "../actions/obsActions";
 import PropTypes from "prop-types";
 
 class Entries extends Component {
-  state = {};
-
   static propTypes = {
     getEntries: PropTypes.func.isRequired,
     entry: PropTypes.object.isRequired,

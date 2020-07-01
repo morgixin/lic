@@ -19,11 +19,11 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          {/* <AppNavbar /> */}
+          <AppNavbar />
           <Container>
-            {console.log("hey")}
-            {/* <LoadUser /> */}
-            {/* <EntryList /> */}
+            {/* {console.log("hey")} */}
+            <LoadUser />
+            <EntryList />
           </Container>
         </div>
       </Provider>
