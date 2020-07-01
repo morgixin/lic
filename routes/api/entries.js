@@ -35,22 +35,6 @@ router.post("/", (req, res) => {
     direc_vento,
   } = req.body;
 
-  // // Validando se todos os campos foram preenchidos
-  // if (
-  //   !hora_leitura ||
-  //   !pressao_atm ||
-  //   !temp_ar ||
-  //   !temp_min ||
-  //   !temp_max ||
-  //   !umid_rel ||
-  //   !umid_min ||
-  //   !rad_solar ||
-  //   !chuva_ac_dia ||
-  //   !inten_vento ||
-  //   !direc_vento
-  // )
-  //   return res.status(400).json({ msg: "Preencha todos os campos" });
-
   Entry.findOne({ hora_leitura }).then((isMatch) => {
     if (isMatch)
       return res
