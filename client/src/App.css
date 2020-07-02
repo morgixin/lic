@@ -5,3 +5,8 @@
 .main-table-week * {
   max-width: 100px;
 }
+
+.main-table-week {
+  max-width: 800px;
+  margin-top: 2rem;
+}

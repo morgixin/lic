@@ -17,28 +17,30 @@ class Entries extends Component {
   rows = () => {
     const { entries } = this.props.entry;
 
-    const listEntries = entries.map((entry) => (
-      <tr key={entry._id}>
-        <td>
-          {new Intl.DateTimeFormat("pt-BR", {
-            month: "2-digit",
-            day: "2-digit",
-          }).format(new Date(entry.hora_leitura))}
-        </td>
-        <td>
-          {entry.temp_max}/{entry.temp_min} ºC
-        </td>
-        <td>
-          {entry.umid_rel}/{entry.umid_min}%
-        </td>
-        <td>{entry.chuva_ac_dia} mm</td>
-        <td>
-          {entry.inten_vento} km/h {entry.direc_vento}
-        </td>
-        <td>{entry.pressao_atm} hPa</td>
-        <td>{entry.rad_solar} W/m2</td>
-      </tr>
-    ));
+    const listEntries = entries
+      .slice(entries.length - 6, entries.length - 1)
+      .map((entry) => (
+        <tr key={entry._id}>
+          <td>
+            {new Intl.DateTimeFormat("pt-BR", {
+              month: "2-digit",
+              day: "2-digit",
+            }).format(new Date(entry.hora_leitura))}
+          </td>
+          <td>
+            {entry.temp_max}/{entry.temp_min} ºC
+          </td>
+          <td>
+            {entry.umid_rel}/{entry.umid_min}%
+          </td>
+          <td>{entry.chuva_ac_dia} mm</td>
+          <td>
+            {entry.inten_vento} km/h {entry.direc_vento}
+          </td>
+          <td>{entry.pressao_atm} hPa</td>
+          <td>{entry.rad_solar} W/m2</td>
+        </tr>
+      ));
 
     return listEntries;
   };
@@ -46,11 +48,8 @@ class Entries extends Component {
   render() {
     return (
       <Container>
-        <Table
-          className="main-table-week"
-          style={{ maxWidth: "800px", marginTop: "2rem" }}
-        >
-          <thead style={{}}>
+        <Table className="main-table-week">
+          <thead>
             <tr className="table-title-simple">
               <th>Data</th>
               <th>Temp Máx/Min</th>
