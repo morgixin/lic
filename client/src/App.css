@@ -1,12 +1,28 @@
+/* body {
+  font-size: 15px;
+} */
+
 .table-title-simple * {
   font-weight: 400;
 }
 
 .main-table-week * {
   max-width: 100px;
+  font-size: 14px;
 }
 
 .main-table-week {
   max-width: 800px;
   margin-top: 2rem;
+}
+
+.main-content-entry {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content-section {
+  display: inherit;
+  flex-direction: row;
+  justify-content: space-between;
 }

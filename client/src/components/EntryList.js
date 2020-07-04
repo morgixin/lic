@@ -18,6 +18,15 @@ class Entries extends Component {
     const { entries } = this.props.entry;
 
     const listEntries = entries
+      .sort((a, b) => {
+        // return a.hora_leitura.localeCompare(b.hora_leitura);
+        return a.hora_leitura < b.hora_leitura
+          ? -1
+          : a.hora_leitura > b.hora_leitura
+          ? 1
+          : 0;
+      })
+      // .filter((entry) => entry.hora_leitura != Date.now())
       .slice(entries.length - 6, entries.length - 1)
       .map((entry) => (
         <tr key={entry._id}>
@@ -28,10 +37,10 @@ class Entries extends Component {
             }).format(new Date(entry.hora_leitura))}
           </td>
           <td>
-            {entry.temp_max}/{entry.temp_min} ºC
+            {entry.temp_ar}/{entry.temp_max}/{entry.temp_min} ºC
           </td>
           <td>
-            {entry.umid_rel}/{entry.umid_min}%
+            {entry.umid_rel} / {entry.umid_min}%
           </td>
           <td>{entry.chuva_ac_dia} mm</td>
           <td>
@@ -42,7 +51,7 @@ class Entries extends Component {
         </tr>
       ));
 
-    return listEntries;
+    return listEntries.sort(() => -1);
   };
 
   render() {
@@ -52,7 +61,7 @@ class Entries extends Component {
           <thead>
             <tr className="table-title-simple">
               <th>Data</th>
-              <th>Temp Máx/Min</th>
+              <th>Temp Ar/Máx/Min</th>
               <th>Umidade Rel/Mín</th>
               <th>Chuva Acumulada 24h</th>
               <th>Vento</th>

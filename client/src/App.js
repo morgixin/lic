@@ -10,6 +10,7 @@ import { loadUser } from "./actions/authActions";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import TodayEntry from "./components/TodayEntry";
 
 class App extends Component {
   componentDidMount() {
@@ -21,8 +22,8 @@ class App extends Component {
         <div className="App">
           <AppNavbar />
           <Container>
-            {/* {console.log("hey")} */}
             <LoadUser />
+            <TodayEntry />
             <EntryList />
           </Container>
         </div>

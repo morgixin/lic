@@ -137,7 +137,7 @@ class EntryModal extends Component {
                   onChange={this.onChange}
                   required
                 />
-                <Label className="lead">Temperaturas (ar/min/max)</Label>
+                <Label className="lead">Temperatura do ar</Label>
                 <Input
                   type="text"
                   name="temp_ar"
@@ -152,7 +152,7 @@ class EntryModal extends Component {
                   name="temp_min"
                   id="temp-min"
                   className="temperatura"
-                  placeholder="mínima"
+                  placeholder="°C mínima"
                   onChange={this.onChange}
                   required
                 />
@@ -161,45 +161,46 @@ class EntryModal extends Component {
                   name="temp_max"
                   id="temp-max"
                   className="temperatura"
-                  placeholder="máxima"
+                  placeholder="°C máxima"
                   onChange={this.onChange}
                   required
                 />
-                <Label className="lead">Umidade (relativa/mín)</Label>
+                <Label className="lead">Umidade relativa do ar</Label>
                 <Input
-                  type="number"
+                  type="text"
                   name="umid_rel"
                   id="umid-rel"
-                  placeholder="relativa"
+                  placeholder="% relativa"
                   onChange={this.onChange}
                   required
                 />
                 <Input
-                  type="number"
+                  type="text"
                   name="umid_min"
                   id="umid-min"
-                  placeholder="mínima"
+                  placeholder="% mínima"
                   onChange={this.onChange}
                   required
                 />
                 <Label className="lead">Radiação solar global</Label>
                 <Input
-                  type="number"
+                  type="text"
                   name="rad_solar"
                   id="rad-global"
                   placeholder="399"
                   onChange={this.onChange}
                   required
                 />
-                <Label className="lead">Chuva acumulada dia</Label>
+                <Label className="lead">Chuva acumulada 24h</Label>
                 <Input
                   type="text"
                   name="chuva_ac_dia"
                   id="ch-ac-dia"
                   placeholder="10"
+                  onChange={this.onChange}
                   required
                 />
-                <Label className="lead">Vento (intensidade/direção)</Label>
+                <Label className="lead">Vento</Label>
                 <Input
                   type="text"
                   name="inten_vento"
@@ -216,7 +217,7 @@ class EntryModal extends Component {
                   onChange={this.onChange}
                   required
                 >
-                  <option value="E">E: este/leste</option>
+                  <option value="E">E: leste</option>
                   <option value="N">N: norte</option>
                   <option value="O">O: oeste</option>
                   <option value="S">S: sul</option>
@@ -224,14 +225,14 @@ class EntryModal extends Component {
                   <option value="NO">NO: noroeste</option>
                   <option value="SE">SE: sudeste</option>
                   <option value="SO">SO: sudoeste</option>
-                  <option value="ENE">ENE: lés-nordeste</option>
-                  <option value="ESE">ESE: lés-sudeste</option>
+                  <option value="ENE">ENE: leste-nordeste</option>
+                  <option value="ESE">ESE: leste-sudeste</option>
                   <option value="SSE">SSE: sul-sudeste</option>
-                  <option value="NNE">NNE: nor-nordeste</option>
-                  <option value="NNO">NNO: nor-noroeste</option>
+                  <option value="NNE">NNE: norte-nordeste</option>
+                  <option value="NNO">NNO: norte-noroeste</option>
                   <option value="SSO">SSO: sul-sudoeste</option>
-                  <option value="OSO">OSO: oés-sudoeste</option>
-                  <option value="ONO">ONO: oés-noroeste</option>
+                  <option value="OSO">OSO: oeste-sudoeste</option>
+                  <option value="ONO">ONO: oeste-nordeste</option>
                 </Input>
                 <Button style={{ marginTop: "2rem" }} color="secondary" block>
                   Gravar dados
@@ -246,7 +247,7 @@ class EntryModal extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  // entry: state.entry,
+  entry: state.entry,
   error: state.error,
   isAuthenticated: state.auth.isAuthenticated,
 });

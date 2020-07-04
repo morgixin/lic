@@ -46,7 +46,7 @@ const EntrySchema = new Schema({
   direc_vento: {
     type: String,
     required: true,
-    maxlength: 2,
+    maxlength: 3,
   },
   inten_vento: {
     type: Number,
