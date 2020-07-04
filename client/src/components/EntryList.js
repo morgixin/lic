@@ -37,17 +37,17 @@ class Entries extends Component {
             }).format(new Date(entry.hora_leitura))}
           </td>
           <td>
-            {entry.temp_ar}/{entry.temp_max}/{entry.temp_min} ºC
+            {entry.temp_ar}/{entry.temp_max}/{entry.temp_min}
           </td>
           <td>
-            {entry.umid_rel} / {entry.umid_min}%
+            {entry.umid_rel} / {entry.umid_min}
           </td>
-          <td>{entry.chuva_ac_dia} mm</td>
+          <td>{entry.chuva_ac_dia} </td>
           <td>
-            {entry.inten_vento} km/h {entry.direc_vento}
+            {entry.inten_vento} {entry.direc_vento}
           </td>
-          <td>{entry.pressao_atm} hPa</td>
-          <td>{entry.rad_solar} W/m2</td>
+          <td>{entry.pressao_atm}</td>
+          <td>{entry.rad_solar}</td>
         </tr>
       ));
 
@@ -61,12 +61,12 @@ class Entries extends Component {
           <thead>
             <tr className="table-title-simple">
               <th>Data</th>
-              <th>Temp Ar/Máx/Min</th>
-              <th>Umidade Rel/Mín</th>
-              <th>Chuva Acumulada 24h</th>
-              <th>Vento</th>
-              <th>Pressão</th>
-              <th>Radiação Solar</th>
+              <th>Temp Ar/Máx/Min ºC</th>
+              <th>Umidade Rel/Mín %</th>
+              <th>Chuva Acumulada 24h mm</th>
+              <th>Vento km/h</th>
+              <th>Pressão hPa</th>
+              <th>Radiação Solar W/m2</th>
             </tr>
           </thead>
           <tbody>{this.rows()}</tbody>
