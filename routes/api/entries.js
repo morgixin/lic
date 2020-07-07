@@ -64,6 +64,7 @@ router.post("/", (req, res) => {
  * @desc    Atualizar uma Entrada
  * @access  Private
  */
+
 // router.put("/:id", (req, res) => {
 //     Obs.findById(req.params.id)
 //     .then(obs => obs.update())
