@@ -25,8 +25,17 @@ export const getEntries = () => (dispatch) => {
 };
 
 export const addEntry = (entry) => (dispatch) => {
+  // Headers
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  entry = JSON.stringify(entry);
+
   axios
-    .post("/api/entries", entry)
+    .post("/api/entries", entry, config)
     .then((res) =>
       dispatch({
         type: ADD_ENTRY,

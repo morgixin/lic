@@ -13,6 +13,7 @@ import {
   Alert,
 } from "reactstrap";
 import { connect } from "react-redux";
+import { Datepicker, DatePicker } from "antd";
 import { addEntry } from "../actions/obsActions";
 import { clearErrors } from "../actions/errorActions";
 import PropTypes from "prop-types";
@@ -21,7 +22,7 @@ class EntryModal extends Component {
   state = {
     modal: false,
     added: false,
-    hora_leitura: 0,
+    hora_leitura: new Date(),
     pressao_atm: 0,
     temp_ar: 0,
     temp_min: 0,
@@ -104,7 +105,7 @@ class EntryModal extends Component {
       inten_vento,
       direc_vento,
     };
-
+    console.log(newEntry);
     // Adiciona a entrada pelo addEntry
     this.props.addEntry(newEntry);
   };
@@ -127,7 +128,8 @@ class EntryModal extends Component {
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
                 <Label className="lead">Horário local da leitura</Label>
-                <Input type="datetime-local" name="hora_leitura" required />
+                <Input type="text" name="hora_leitura" required />
+                {/* <DatePicker name="hora_leitura" required /> */}
                 <Label className="lead">Pressão atmosférica</Label>
                 <Input
                   type="text"

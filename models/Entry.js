@@ -4,43 +4,42 @@ const Schema = mongoose.Schema;
 const EntrySchema = new Schema({
   hora_leitura: {
     type: Date,
-    default: Date.now,
     required: true,
   },
   pressao_atm: {
-    type: Number,
+    type: String,
     required: true,
     min: 0,
   },
   temp_ar: {
-    type: Number,
+    type: String,
     required: true,
     min: 0,
   },
   temp_max: {
-    type: Number,
+    type: String,
     min: 0,
   },
   temp_min: {
-    type: Number,
+    type: String,
     min: 0,
   },
   umid_rel: {
-    type: Number,
+    type: String,
     required: true,
     min: 0,
   },
   umid_min: {
-    type: Number,
+    type: String,
     min: 0,
   },
   rad_solar: {
-    type: Number,
+    type: String,
     required: true,
     min: 0,
   },
   chuva_ac_dia: {
-    type: Number,
+    type: String,
     min: 0,
   },
   direc_vento: {
@@ -49,7 +48,7 @@ const EntrySchema = new Schema({
     maxlength: 3,
   },
   inten_vento: {
-    type: Number,
+    type: String,
     required: true,
     min: 0,
   },

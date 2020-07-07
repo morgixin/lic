@@ -22,6 +22,7 @@ export class TodayEntry extends Component {
         new Date(entry.hora_leitura).setHours(0, 0, 0, 0) ==
         todayDate.setHours(0, 0, 0, 0)
     );
+
     return (
       <Container className="main-content-entry">
         <p style={{ color: "#aaa", fontSize: "smaller" }}>
