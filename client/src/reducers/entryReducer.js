@@ -9,6 +9,7 @@ import {
 const initialState = {
   entries: [],
   loading: false,
+  added: false,
 };
 
 export default function (state = initialState, action) {
@@ -23,6 +24,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         entries: [action.payload, ...state.entries],
+        added: true,
       };
     case DELETE_ENTRY:
       return {
@@ -32,6 +34,7 @@ export default function (state = initialState, action) {
     case ADD_ENTRY_FAIL:
       return {
         ...state,
+        added: false,
       };
     case ENTRIES_LOADING:
       return {

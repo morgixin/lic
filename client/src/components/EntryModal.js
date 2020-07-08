@@ -13,7 +13,7 @@ import {
   Alert,
 } from "reactstrap";
 import { connect } from "react-redux";
-import { Datepicker, DatePicker } from "antd";
+import { DatePicker } from "antd";
 import { addEntry } from "../actions/obsActions";
 import { clearErrors } from "../actions/errorActions";
 import PropTypes from "prop-types";
@@ -21,7 +21,6 @@ import PropTypes from "prop-types";
 class EntryModal extends Component {
   state = {
     modal: false,
-    added: false,
     hora_leitura: new Date(),
     pressao_atm: 0,
     temp_ar: 0,
@@ -38,14 +37,14 @@ class EntryModal extends Component {
 
   static propTypes = {
     isAuthenticated: PropTypes.bool,
+    added: PropTypes.bool,
     addEntry: PropTypes.func.isRequired,
     error: PropTypes.object.isRequired,
     clearErrors: PropTypes.func.isRequired,
   };
 
   componentDidUpdate(prevProps) {
-    const { error } = this.props;
-    const added = this.state.added;
+    const { error, added } = this.props;
 
     if (error !== prevProps.error) {
       // Check for register error
@@ -58,7 +57,7 @@ class EntryModal extends Component {
 
     // If authenticated, close modal
     if (this.state.modal) {
-      if (error.msg.msg === null) {
+      if (added) {
         this.toggle();
       }
     }
@@ -105,7 +104,7 @@ class EntryModal extends Component {
       inten_vento,
       direc_vento,
     };
-    console.log(newEntry);
+
     // Adiciona a entrada pelo addEntry
     this.props.addEntry(newEntry);
   };
@@ -128,8 +127,12 @@ class EntryModal extends Component {
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
                 <Label className="lead">Horário local da leitura</Label>
-                <Input type="text" name="hora_leitura" required />
-                {/* <DatePicker name="hora_leitura" required /> */}
+                <Input
+                  name="hora_leitura"
+                  type="datetime-local"
+                  onChange={this.onChange}
+                  required
+                />
                 <Label className="lead">Pressão atmosférica</Label>
                 <Input
                   type="text"
@@ -252,6 +255,7 @@ const mapStateToProps = (state) => ({
   entry: state.entry,
   error: state.error,
   isAuthenticated: state.auth.isAuthenticated,
+  added: state.entry.added,
 });
 
 export default connect(mapStateToProps, { addEntry, clearErrors })(EntryModal);

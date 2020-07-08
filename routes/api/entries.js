@@ -65,9 +65,8 @@ router.post("/", (req, res) => {
  * @access  Private
  */
 
-// router.put("/:id", (req, res) => {
-//     Obs.findById(req.params.id)
-//     .then(obs => obs.update())
-// })
+router.put("/:id", (req, res) => {
+  Entry.findById(req.params.id).then((entry) => entry.update());
+});
 
 module.exports = router;

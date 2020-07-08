@@ -23,7 +23,7 @@ class App extends Component {
           <AppNavbar />
           <Container>
             <LoadUser />
-            <TodayEntry />
+            {/* <TodayEntry /> */}
             <EntryList />
           </Container>
         </div>
