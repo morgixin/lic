@@ -13,7 +13,6 @@ import {
   Alert,
 } from "reactstrap";
 import { connect } from "react-redux";
-import { DatePicker } from "antd";
 import { addEntry } from "../actions/obsActions";
 import { clearErrors } from "../actions/errorActions";
 import PropTypes from "prop-types";
