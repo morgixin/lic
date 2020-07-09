@@ -27,7 +27,7 @@ export class TodayEntry extends Component {
           : 0;
       })
       .map((entry) => (
-        <Container className="main-content-entry">
+        <Container className="main-content-entry" style={{ padding: "0 8px" }}>
           <p style={{ color: "#aaa", fontSize: "smaller" }}>
             {Date(entry.hora_leitura)}
           </p>
@@ -90,7 +90,7 @@ export class TodayEntry extends Component {
   render() {
     return (
       <div>
-        <Jumbotron fluid style={{ padding: "12px 6px", maxWidth: "814px" }}>
+        <Jumbotron fluid style={{ padding: "12px 0px", maxWidth: "814px" }}>
           <Container fluid>{this.mainContent()}</Container>
         </Jumbotron>
       </div>
