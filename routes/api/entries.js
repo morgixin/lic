@@ -11,7 +11,7 @@ const Entry = require("../../models/Entry");
  */
 router.get("/", (req, res) => {
   Entry.find()
-    .sort({ hora_leitura: -1 })
+    .sort({ hora_leitura: 1 })
     .then((entry) => res.json(entry));
 });
 
@@ -65,8 +65,8 @@ router.post("/", (req, res) => {
  * @access  Private
  */
 
-router.put("/:id", (req, res) => {
-  Entry.findById(req.params.id).then((entry) => entry.update());
-});
+// router.put("/:id", (req, res) => {
+//   Entry.findById(req.params.id).then((entry) => entry.update());
+// });
 
 module.exports = router;

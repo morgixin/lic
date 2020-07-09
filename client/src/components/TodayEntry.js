@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import { Jumbotron, Container } from "reactstrap";
 import { connect } from "react-redux";
 import { getEntries } from "../actions/obsActions";
 import PropTypes from "prop-types";
-import { Jumbotron, Container } from "reactstrap";
 
 export class TodayEntry extends Component {
   static propTypes = {
@@ -16,69 +16,75 @@ export class TodayEntry extends Component {
 
   mainContent = () => {
     const { entries } = this.props.entry;
-    const todayDate = new Date();
-    const todayEntry = entries.filter(
-      (entry) =>
-        new Date(entry.hora_leitura).setHours(0, 0, 0, 0) ==
-        todayDate.setHours(0, 0, 0, 0)
-    );
+    // console.log(entries);
 
-    return (
-      <Container className="main-content-entry">
-        <p style={{ color: "#aaa", fontSize: "smaller" }}>
-          {Date(todayEntry.hora_leitura)}
-        </p>
-        <div className="main-content-section">
-          <div className="main-content-subsection">
-            <p className="section-title">Temperatura do ar</p>
-            <div style={{ color: "#ED6440" }}>
-              <p className="section-value">{todayEntry.temp_ar}</p>
-              <p>ºC</p>
+    const todayEntry = entries
+      .sort((a, b) => {
+        return a.hora_leitura < b.hora_leitura
+          ? -1
+          : a.hora_leitura > b.hora_leitura
+          ? 1
+          : 0;
+      })
+      .map((entry) => (
+        <Container className="main-content-entry">
+          <p style={{ color: "#aaa", fontSize: "smaller" }}>
+            {Date(entry.hora_leitura)}
+          </p>
+          <div className="main-content-section">
+            <div className="main-content-subsection">
+              <p className="subsection-title">Temperatura do ar</p>
+              <div style={{ color: "#ED6440" }} className="subsection-row">
+                <p className="subsection-value">{entry.temp_ar}</p>
+                <p style={{ marginLeft: "6px" }}> ºC</p>
+              </div>
+            </div>
+
+            <div className="main-content-subsection">
+              <p className="subsection-title">Umidade Relativa</p>
+              <div style={{ color: "#76CDCE" }} className="subsection-row">
+                <p className="subsection-value">{entry.umid_rel}</p>
+                <p style={{ marginLeft: "6px" }}>%</p>
+              </div>
+            </div>
+
+            <div className="main-content-subsection">
+              <p className="subsection-title">Chuva Acumulada 24h</p>
+              <div style={{ color: "#72A2ED" }} className="subsection-row">
+                <p className="subsection-value">{entry.chuva_ac_dia}</p>
+                <p style={{ marginLeft: "6px" }}>mm</p>
+              </div>
+            </div>
+
+            <div className="main-content-subsection">
+              <p className="subsection-title">Vento</p>
+              <div style={{ color: "#418ABD" }} className="subsection-row">
+                <p className="subsection-value">{entry.inten_vento}</p>
+                <p style={{ marginLeft: "6px" }}>km/h {entry.direc_vento}</p>
+              </div>
+            </div>
+
+            <div className="main-content-subsection">
+              <p className="subsection-title">Pressão Atmosférica</p>
+              <div style={{ color: "#008000" }} className="subsection-row">
+                <p className="subsection-value">{entry.pressao_atm}</p>
+                <p style={{ marginLeft: "6px" }}>hPa</p>
+              </div>
+            </div>
+
+            <div className="main-content-subsection">
+              <p className="subsection-title">Radiação Solar Global</p>
+              <div style={{ color: "#418ABD" }} className="subsection-row">
+                <p className="subsection-value">{entry.rad_solar}</p>
+                <p style={{ marginLeft: "6px" }}>W/m2</p>
+              </div>
             </div>
           </div>
+        </Container>
+      ))
+      .slice(-1)[0];
 
-          <div className="main-content-subsection">
-            <p className="section-title">Umidade Relativa</p>
-            <div style={{ color: "#76CDCE" }}>
-              <p className="section-value">{todayEntry.umid_rel}</p>
-              <p>%</p>
-            </div>
-          </div>
-
-          <div className="main-content-subsection">
-            <p className="section-title">Chuva Acumulada 24h</p>
-            <div style={{ color: "#72A2ED" }}>
-              <p className="section-value">{todayEntry.ch_ac_dia}</p>
-              <p>mm</p>
-            </div>
-          </div>
-
-          <div className="main-content-subsection">
-            <p className="section-title">Vento</p>
-            <div style={{ color: "#418ABD" }}>
-              <p className="section-value">{todayEntry.inten_vento}</p>
-              <p> km/h {todayEntry.direc_vento}</p>
-            </div>
-          </div>
-
-          <div className="main-content-subsection">
-            <p className="section-title">Pressão Atmosférica</p>
-            <div style={{ color: "#008000" }}>
-              <p className="section-value">{todayEntry.pressao_atm}</p>
-              <p>hPa</p>
-            </div>
-          </div>
-
-          <div className="main-content-subsection">
-            <p className="section-title">Radiação Solar Global</p>
-            <div style={{ color: "#418ABD" }}>
-              <p className="section-value">{todayEntry.rad_solar}</p>
-              <p>W/m2</p>
-            </div>
-          </div>
-        </div>
-      </Container>
-    );
+    return todayEntry;
   };
 
   render() {

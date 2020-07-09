@@ -19,10 +19,21 @@
 .main-content-entry {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .main-content-section {
   display: inherit;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.main-content-subsection {
+  max-width: 120px;
+}
+
+.subsection-row {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-evenly; */
 }

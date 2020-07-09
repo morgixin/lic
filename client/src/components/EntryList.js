@@ -19,15 +19,13 @@ class Entries extends Component {
 
     const listEntries = entries
       .sort((a, b) => {
-        // return a.hora_leitura.localeCompare(b.hora_leitura);
         return a.hora_leitura < b.hora_leitura
           ? -1
           : a.hora_leitura > b.hora_leitura
           ? 1
           : 0;
       })
-      // .filter((entry) => entry.hora_leitura != Date.now())
-      .slice(entries.length - 5, entries.length)
+      .slice(entries.length - 6, entries.length - 1)
       .map((entry) => (
         <tr key={entry._id}>
           <td>
