@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://Ana:exnHUnCRHUxE8ToT@metcluster-ofscf.mongodb.net/metstation?retryWrites=true&w=majority",
+  "mongoURI": "myMongoURI",
   "jwtSecret": "ms_JwtSecret"
 }
