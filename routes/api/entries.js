@@ -11,7 +11,7 @@ const Entry = require("../../models/Entry");
  */
 router.get("/", (req, res) => {
   Entry.find()
-    .sort({ hora_leitura: 1 })
+    .sort({ hora_leitura: -1 })
     .then((entry) => res.json(entry));
 });
 

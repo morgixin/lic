@@ -1,6 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Container } from "reactstrap";
 
 class LoadUser extends Component {
   static propTypes = {
@@ -16,7 +17,7 @@ class LoadUser extends Component {
       </span>
     );
 
-    return <Fragment>{isAuthenticated ? showName : "Bem vindo"}</Fragment>;
+    return <Container>{isAuthenticated ? showName : "Bem vindo"}</Container>;
   }
 }
 

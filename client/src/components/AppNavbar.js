@@ -59,8 +59,11 @@ class AppNavbar extends Component {
           color="light"
           light
           expand="sm"
-          className="mb-4"
-          style={{ borderBottom: "6px solid lightblue" }}
+          className="mb-4 nav-reduce-margin"
+          style={{
+            borderBottom: "6px solid lightblue",
+            position: "sticky",
+          }}
         >
           <Container>
             <NavbarBrand href="/">

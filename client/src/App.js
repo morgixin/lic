@@ -11,6 +11,7 @@ import { loadUser } from "./actions/authActions";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import TodayEntry from "./components/TodayEntry";
+import StationInfo from "./components/StationInfo.js";
 
 class App extends Component {
   componentDidMount() {
@@ -21,10 +22,13 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <AppNavbar />
-          <Container>
-            <LoadUser />
-            <TodayEntry />
-            <EntryList />
+          <LoadUser />
+          <Container className="main-content">
+            <div>
+              <TodayEntry />
+              <EntryList />
+            </div>
+            <StationInfo />
           </Container>
         </div>
       </Provider>

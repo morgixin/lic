@@ -1,9 +1,16 @@
-/* body {
-  font-size: 15px;
-} */
+.main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 .table-title-simple * {
   font-weight: 400;
+  /* border: none !important; */
+}
+
+.nav-reduce-margin {
+  margin-bottom: 12px !important;
 }
 
 .main-table-week * {
@@ -14,6 +21,19 @@
 .main-table-week {
   max-width: 800px;
   margin-top: 2rem;
+  margin-bottom: 0 !important;
+}
+
+.sidebar {
+  position: absolute;
+  right: 7em;
+  max-width: 180px;
+  text-align: right;
+  background-color: white;
+}
+
+.sidebar-line > div {
+  border-top: 1px solid lightgray;
 }
 
 .main-content-entry {
@@ -22,18 +42,43 @@
   justify-content: space-between;
 }
 
-.main-content-section {
+/* .main-content-table {
   display: inherit;
   flex-direction: row;
   justify-content: space-between;
+} */
+
+.subsection-title {
+  border: 0px !important;
+  font-weight: 400;
+  max-width: 100px;
 }
 
+.main-content-subsection,
+.main-content-subsection * {
+  border: 0px !important;
+  padding: 0px 6px !important;
+  margin: 0px;
+}
+
+.main-content-table,
+.subsection-title,
+.subsection-value,
+.subsection-row {
+  padding: 0px !important;
+}
+
+.subsection-title,
 .main-content-subsection {
-  max-width: 120px;
+  padding-right: 12px !important;
+}
+
+.subsection-value {
+  font-size: 2rem;
 }
 
 .subsection-row {
   display: flex;
   flex-direction: row;
-  /* justify-content: space-evenly; */
+  align-items: baseline;
 }

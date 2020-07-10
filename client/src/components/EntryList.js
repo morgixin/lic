@@ -61,7 +61,7 @@ class Entries extends Component {
               <th>Data</th>
               <th>Temp Ar/Máx/Min ºC</th>
               <th>Umidade Rel/Mín %</th>
-              <th>Chuva Acumulada 24h mm</th>
+              <th>Chuva Ac. 24h mm</th>
               <th>Vento km/h</th>
               <th>Pressão hPa</th>
               <th>Radiação Solar W/m2</th>
