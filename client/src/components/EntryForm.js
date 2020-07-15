@@ -126,7 +126,7 @@ class EntryModal extends Component {
                   id="date-input"
                   type="text"
                   placeholder="data"
-                  onFocus={(this.type = "datetime-local")}
+                  onFocus="(this.type = 'datetime-local')"
                   onBlur={(this.type = "text")}
                   onChange={this.onChange}
                   required
@@ -258,13 +258,17 @@ class EntryModal extends Component {
                   </Input>
                 </div>
               </FormGroup>
-              <Link
-                className="btn btn-secondaty btn-block"
-                style={{ marginTop: "2rem" }}
-                to="/"
+              <Button
+                style={{
+                  marginTop: "2rem",
+                  width: "fit-content",
+                  height: "fit-content",
+                }}
+                color="secondary"
+                block
               >
-                Gravar dados
-              </Link>
+                <Link to="/">Gravar dados</Link>
+              </Button>
             </Form>
           </div>
         </Container>
