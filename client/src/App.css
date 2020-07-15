@@ -9,6 +9,32 @@
   /* border: none !important; */
 }
 
+.form-flex {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 700px;
+  /* justify-content: flex-start; */
+}
+
+.input-group-flex {
+  display: flex;
+  flex-flow: row wrap;
+  /* flex-direction: row; */
+}
+
+.form-group-flex > Input,
+.form-group-flex > div > Input {
+  max-width: 100px;
+  /* width: fit-content !important; */
+  margin-right: 6px;
+}
+
+.form-group-flex {
+  margin-right: 24px;
+  margin-top: 6px;
+  max-width: 220px;
+}
+
 .nav-reduce-margin {
   margin-bottom: 12px !important;
 }
@@ -41,12 +67,6 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
-/* .main-content-table {
-  display: inherit;
-  flex-direction: row;
-  justify-content: space-between;
-} */
 
 .subsection-title {
   border: 0px !important;

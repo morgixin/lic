@@ -8,12 +8,13 @@ import {
   NavItem,
   Container,
 } from "reactstrap";
-import EntryModal from "./EntryModal";
+// import EntryModal from "./EntryModal";
 import LoginModal from "./auth/LoginModal";
 import SigninModal from "./auth/SigninModal";
 import Logout from "./auth/Logout";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 class AppNavbar extends Component {
   state = {
@@ -35,7 +36,9 @@ class AppNavbar extends Component {
     const authLinks = (
       <Fragment>
         <NavItem>
-          <EntryModal />
+          <Link className="nav-link" to="/inserir">
+            Inserir dados
+          </Link>
         </NavItem>
         <NavItem>
           <Logout />
