@@ -1,4 +1,6 @@
 import {
+  GET_USERS,
+  USERS_LOADING,
   USER_LOADED,
   USER_LOADING,
   AUTH_ERROR,
@@ -14,10 +16,23 @@ const initialState = {
   isAuthenticated: null,
   isLoading: false,
   user: null,
+  users: [],
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case GET_USERS:
+      return {
+        ...state,
+        users: action.payload,
+        isLoading: false,
+      };
+    case USERS_LOADING:
+      return {
+        ...state,
+        users: action.payload,
+        isLoading: true,
+      };
     case USER_LOADING:
       return {
         ...state,

@@ -6,7 +6,6 @@ import {
   ENTRIES_LOADING,
   ADD_ENTRY_FAIL,
 } from "../actions/types";
-// import { tokenConfig } from "./authActions";
 import { returnErrors } from "./errorActions";
 
 export const getEntries = () => (dispatch) => {

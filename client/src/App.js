@@ -14,6 +14,9 @@ import "./App.css";
 import TodayEntry from "./components/TodayEntry";
 import StationInfo from "./components/StationInfo.js";
 import EntryForm from "./components/EntryForm";
+import Login from "./components/auth/Login";
+// import { AdmList } from "./components/AdmList";
+
 class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser());
@@ -27,7 +30,9 @@ class App extends Component {
             <AppNavbar />
             <Container className="main-content">
               <div>
-                <Route path="/inserir" component={EntryForm} />
+                <Route exact path="/inserir" component={EntryForm} />
+                <Route exact path="/entrar" component={Login} />
+                {/* <Route exact path="/adms" component={AdmList} /> */}
                 <Route exact path="/">
                   <LoadUser />
                   <TodayEntry />

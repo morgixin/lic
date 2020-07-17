@@ -39,6 +39,9 @@ class AppNavbar extends Component {
           <Link className="nav-link" to="/inserir">
             Inserir dados
           </Link>
+          {/* <Link className="nav-link" to="/adms">
+            Adms
+          </Link> */}
         </NavItem>
         <NavItem>
           <Logout />

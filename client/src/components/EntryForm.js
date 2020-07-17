@@ -14,7 +14,7 @@ import { connect } from "react-redux";
 import { addEntry } from "../actions/obsActions";
 import { clearErrors } from "../actions/errorActions";
 import PropTypes from "prop-types";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class EntryModal extends Component {
   state = {
@@ -53,17 +53,14 @@ class EntryModal extends Component {
       }
     }
 
-    // If authenticated, close modal
-    if (this.state.modal) {
-      if (added) {
-        this.goBackToHome();
-      }
+    // go back to Home Page if added
+    if (added) {
+      console.log("oi");
+      window.location.href = "/";
+      // this.props.router.push("/");
+      // return <Redirect from="/inserir" to="/" />;
     }
   }
-
-  goBackToHome = (e) => {
-    return <Redirect to="/" />;
-  };
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -101,8 +98,6 @@ class EntryModal extends Component {
 
     // Adiciona a entrada pelo addEntry
     this.props.addEntry(newEntry);
-
-    this.goBackToHome();
   };
 
   render() {
@@ -124,10 +119,11 @@ class EntryModal extends Component {
                 <Input
                   name="hora_leitura"
                   id="date-input"
+                  // type="datetime-local"
                   type="text"
                   placeholder="data"
-                  onFocus="(this.type = 'datetime-local')"
-                  onBlur={(this.type = "text")}
+                  // onFocus="(this.type = 'datetime-local')"
+                  // onBlur={(this.type = "text")}
                   onChange={this.onChange}
                   required
                 />
@@ -267,7 +263,7 @@ class EntryModal extends Component {
                 color="secondary"
                 block
               >
-                <Link to="/">Gravar dados</Link>
+                Gravar dados
               </Button>
             </Form>
           </div>

@@ -35,7 +35,7 @@ class Entries extends Component {
             }).format(new Date(entry.hora_leitura))}
           </td>
           <td>
-            {entry.temp_ar}/{entry.temp_max}/{entry.temp_min}
+            {entry.temp_ar} / {entry.temp_max} / {entry.temp_min}
           </td>
           <td>
             {entry.umid_rel} / {entry.umid_min}

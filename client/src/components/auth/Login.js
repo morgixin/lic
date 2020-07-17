@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import {
   Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
   Form,
   FormGroup,
   Label,
   Input,
-  NavLink,
   //   FormFeedback,
   Alert,
 } from "reactstrap";
@@ -18,7 +14,7 @@ import { login } from "../../actions/authActions";
 import { clearErrors } from "../../actions/errorActions";
 import { Redirect } from "react-router-dom";
 
-class LoginModal extends Component {
+class Login extends Component {
   state = {
     modal: false,
     apelido: "",
@@ -46,10 +42,9 @@ class LoginModal extends Component {
     }
 
     // Se autenticado, fecha o modal
-    if (this.state.modal) {
-      if (isAuthenticated) {
-        <Redirect to="/"></Redirect>;
-      }
+    if (isAuthenticated) {
+      window.location.href = "/";
+      // return <Redirect exact from="/entrar" to="/"></Redirect>;
     }
   }
 
@@ -113,4 +108,4 @@ const mapStateToProps = (state) => ({
   error: state.error,
 });
 
-export default connect(mapStateToProps, { login, clearErrors })(LoginModal);
+export default connect(mapStateToProps, { login, clearErrors })(Login);

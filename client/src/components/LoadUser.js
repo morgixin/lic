@@ -17,7 +17,7 @@ class LoadUser extends Component {
       </span>
     );
 
-    return <Container>{isAuthenticated ? showName : "Bem vindo"}</Container>;
+    return <Container>{isAuthenticated ? showName : null}</Container>;
   }
 }
 

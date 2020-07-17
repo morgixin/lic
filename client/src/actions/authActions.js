@@ -1,5 +1,7 @@
 import axios from "axios";
 import {
+  GET_USERS,
+  USERS_LOADING,
   USER_LOADED,
   USER_LOADING,
   AUTH_ERROR,
@@ -10,6 +12,21 @@ import {
   LOGIN_FAIL,
 } from "./types";
 import { returnErrors } from "./errorActions";
+
+export const getUsers = () => (dispatch) => {
+  dispatch({ type: USERS_LOADING });
+  axios
+    .get("/api/user")
+    .then((res) =>
+      dispatch({
+        type: GET_USERS,
+        payload: res.data,
+      })
+    )
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};
 
 // Check token & load user
 export const loadUser = () => (dispatch, getState) => {
