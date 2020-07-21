@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   Button,
   Form,
-  FormGroup,
   // FormFeedback,
   Label,
   Input,
@@ -14,7 +13,7 @@ import { connect } from "react-redux";
 import { addEntry } from "../actions/obsActions";
 import { clearErrors } from "../actions/errorActions";
 import PropTypes from "prop-types";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 
 class EntryModal extends Component {
   state = {
@@ -55,10 +54,7 @@ class EntryModal extends Component {
 
     // go back to Home Page if added
     if (added) {
-      console.log("oi");
       window.location.href = "/";
-      // this.props.router.push("/");
-      // return <Redirect from="/inserir" to="/" />;
     }
   }
 
@@ -111,10 +107,10 @@ class EntryModal extends Component {
             ) : null}
             <Form
               onSubmit={this.onSubmit}
-              style={{ maxHeight: "600px", width: "800px" }}
-              className="form-flex"
+              /*style={{ width: "800px" }}*/
+              className="form-grid-4"
             >
-              <FormGroup className="form-group-flex">
+              <div className="item">
                 <Label className="lead">Horário local da leitura</Label>
                 <Input
                   name="hora_leitura"
@@ -127,8 +123,8 @@ class EntryModal extends Component {
                   onChange={this.onChange}
                   required
                 />
-              </FormGroup>
-              <FormGroup className="form-group-flex">
+              </div>
+              <div className="item">
                 <Label className="lead">Pressão atmosférica</Label>
                 <Input
                   type="text"
@@ -138,8 +134,8 @@ class EntryModal extends Component {
                   onChange={this.onChange}
                   required
                 />
-              </FormGroup>
-              <FormGroup className="form-group-flex">
+              </div>
+              <div className="item">
                 <Label className="lead">Temperatura do ar</Label>
                 <div className="input-group-flex">
                   <Input
@@ -170,8 +166,8 @@ class EntryModal extends Component {
                     required
                   />
                 </div>
-              </FormGroup>
-              <FormGroup className="form-group-flex">
+              </div>
+              <div className="item">
                 <Label className="lead">Umidade relativa do ar</Label>
                 <div className="input-group-flex">
                   <Input
@@ -191,8 +187,8 @@ class EntryModal extends Component {
                     required
                   />
                 </div>
-              </FormGroup>
-              <FormGroup className="form-group-flex">
+              </div>
+              <div className="item">
                 <Label className="lead">Radiação solar global</Label>
                 <Input
                   type="text"
@@ -202,8 +198,8 @@ class EntryModal extends Component {
                   onChange={this.onChange}
                   required
                 />
-              </FormGroup>
-              <FormGroup className="form-group-flex">
+              </div>
+              <div className="item">
                 <Label className="lead">Chuva acumulada 24h</Label>
                 <Input
                   type="text"
@@ -213,8 +209,8 @@ class EntryModal extends Component {
                   onChange={this.onChange}
                   required
                 />
-              </FormGroup>
-              <FormGroup className="form-group-flex">
+              </div>
+              <div className="item">
                 <Label className="lead">Vento</Label>
                 <div className="input-group-flex">
                   <Input
@@ -253,13 +249,13 @@ class EntryModal extends Component {
                     <option value="ONO">ONO: oeste-nordeste</option>
                   </Input>
                 </div>
-              </FormGroup>
+              </div>
               <Button
                 style={{
-                  marginTop: "2rem",
                   width: "fit-content",
                   height: "fit-content",
                 }}
+                className="btn-footer"
                 color="secondary"
                 block
               >

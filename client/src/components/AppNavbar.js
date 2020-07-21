@@ -8,7 +8,6 @@ import {
   NavItem,
   Container,
 } from "reactstrap";
-// import EntryModal from "./EntryModal";
 import LoginModal from "./auth/LoginModal";
 import SigninModal from "./auth/SigninModal";
 import Logout from "./auth/Logout";
@@ -39,9 +38,6 @@ class AppNavbar extends Component {
           <Link className="nav-link" to="/inserir">
             Inserir dados
           </Link>
-          {/* <Link className="nav-link" to="/adms">
-            Adms
-          </Link> */}
         </NavItem>
         <NavItem>
           <Logout />
@@ -52,13 +48,13 @@ class AppNavbar extends Component {
     const guestLinks = (
       <Fragment>
         <NavItem>
-          <SigninModal />
-        </NavItem>
-        <NavItem>
-          <LoginModal />
+          <Link className="nav-link" to="/entrar">
+            Entrar
+          </Link>
         </NavItem>
       </Fragment>
     );
+
     return (
       <div>
         <Navbar

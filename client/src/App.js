@@ -15,7 +15,7 @@ import TodayEntry from "./components/TodayEntry";
 import StationInfo from "./components/StationInfo.js";
 import EntryForm from "./components/EntryForm";
 import Login from "./components/auth/Login";
-// import { AdmList } from "./components/AdmList";
+import Signin from "./components/auth/Signin";
 
 class App extends Component {
   componentDidMount() {
@@ -31,7 +31,15 @@ class App extends Component {
             <Container className="main-content">
               <div>
                 <Route exact path="/inserir" component={EntryForm} />
-                <Route exact path="/entrar" component={Login} />
+                <Route exact path="/entrar">
+                  <Container
+                    className="mt-2"
+                    style={{ display: "flex", width: "820px" }}
+                  >
+                    <Login />
+                    <Signin />
+                  </Container>
+                </Route>
                 {/* <Route exact path="/adms" component={AdmList} /> */}
                 <Route exact path="/">
                   <LoadUser />

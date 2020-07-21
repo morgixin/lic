@@ -1,0 +1,10 @@
+.main-table-week * {
+  max-width: 100px;
+  font-size: 14px;
+}
+
+.main-table-week {
+  max-width: 800px;
+  margin-top: 2rem;
+  margin-bottom: 0 !important;
+}

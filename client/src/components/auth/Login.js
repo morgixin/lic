@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {
   Button,
   Form,
-  FormGroup,
+  div,
   Label,
   Input,
   //   FormFeedback,
@@ -12,7 +12,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/authActions";
 import { clearErrors } from "../../actions/errorActions";
-import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   state = {
@@ -44,7 +43,6 @@ class Login extends Component {
     // Se autenticado, fecha o modal
     if (isAuthenticated) {
       window.location.href = "/";
-      // return <Redirect exact from="/entrar" to="/"></Redirect>;
     }
   }
 
@@ -67,36 +65,50 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <h2 className="h3">Entrar</h2>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          width: "800px",
+          justifyContent: "space-between",
+        }}
+      >
         <div>
-          {this.state.msg ? (
-            <Alert color="danger">{this.state.msg}</Alert>
-          ) : null}
-          <Form onSubmit={this.onSubmit}>
-            <FormGroup>
-              <Label for="apelido">Apelido</Label>
-              <Input
-                type="text"
-                name="apelido"
-                id="apelido"
-                placeholder="Apelido"
-                onChange={this.onChange}
-              />
-
-              <Label for="senha">Senha</Label>
-              <Input
-                type="password"
-                name="senha"
-                id="senha"
-                placeholder="Senha"
-                onChange={this.onChange}
-              />
-              <Button color="dark" style={{ marginTop: "2rem" }} block>
+          <h2 className="h3 mb-3">Entrar</h2>
+          <div style={{ marginLeft: "12px" }}>
+            {this.state.msg ? (
+              <Alert color="danger">{this.state.msg}</Alert>
+            ) : null}
+            <Form onSubmit={this.onSubmit} className="form-grid-2">
+              <div className="item">
+                <Label for="apelido">Apelido</Label>
+                <Input
+                  type="text"
+                  name="apelido"
+                  placeholder="Apelido"
+                  onChange={this.onChange}
+                />
+              </div>
+              <div className="item">
+                <Label for="senha">Senha</Label>
+                <Input
+                  type="password"
+                  name="senha"
+                  placeholder="Senha"
+                  onChange={this.onChange}
+                />
+              </div>
+              <Button
+                color="dark"
+                style={{ width: "fit-content", height: "fit-content" }}
+                className="btn-footer"
+                color="secondary"
+                block
+              >
                 Entrar
               </Button>
-            </FormGroup>
-          </Form>
+            </Form>
+          </div>
         </div>
       </div>
     );

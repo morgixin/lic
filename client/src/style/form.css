@@ -1,0 +1,25 @@
+.form-flex {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 800px;
+}
+
+.form-grid-4 {
+  display: grid;
+  grid-template-columns: 180px 180px 180px 180px;
+  column-gap: 12px;
+  row-gap: 18px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 180px 180px;
+  column-gap: 12px;
+  row-gap: 24px;
+}
+
+.btn-footer {
+  justify-content: start;
+  grid-column: 1;
+  grid-row: end + 1;
+}

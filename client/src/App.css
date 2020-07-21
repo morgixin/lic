@@ -1,3 +1,7 @@
+@import url("style/form.css");
+@import url("style/main-entry.css");
+@import url("style/last-entries.css");
+
 .main-content {
   display: flex;
   flex-direction: row;
@@ -6,48 +10,21 @@
 
 .table-title-simple * {
   font-weight: 400;
-  /* border: none !important; */
-}
-
-.form-flex {
-  display: flex;
-  flex-flow: row wrap;
-  max-width: 700px;
-  /* justify-content: flex-start; */
 }
 
 .input-group-flex {
   display: flex;
   flex-flow: row wrap;
-  /* flex-direction: row; */
 }
 
-.form-group-flex > Input,
-.form-group-flex > div > Input {
-  max-width: 100px;
-  /* width: fit-content !important; */
-  margin-right: 6px;
-}
-
-.form-group-flex {
-  margin-right: 24px;
-  margin-top: 6px;
-  max-width: 220px;
+Input {
+  border: 0 !important;
+  border-bottom: lightgray solid 1px !important;
+  border-radius: 0 !important;
 }
 
 .nav-reduce-margin {
   margin-bottom: 12px !important;
-}
-
-.main-table-week * {
-  max-width: 100px;
-  font-size: 14px;
-}
-
-.main-table-week {
-  max-width: 800px;
-  margin-top: 2rem;
-  margin-bottom: 0 !important;
 }
 
 .sidebar {
@@ -60,45 +37,4 @@
 
 .sidebar-line > div {
   border-top: 1px solid lightgray;
-}
-
-.main-content-entry {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.subsection-title {
-  border: 0px !important;
-  font-weight: 400;
-  max-width: 100px;
-}
-
-.main-content-subsection,
-.main-content-subsection * {
-  border: 0px !important;
-  padding: 0px 6px !important;
-  margin: 0px;
-}
-
-.main-content-table,
-.subsection-title,
-.subsection-value,
-.subsection-row {
-  padding: 0px !important;
-}
-
-.subsection-title,
-.main-content-subsection {
-  padding-right: 12px !important;
-}
-
-.subsection-value {
-  font-size: 2rem;
-}
-
-.subsection-row {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
 }
