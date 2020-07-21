@@ -8,8 +8,6 @@ import {
   NavItem,
   Container,
 } from "reactstrap";
-import LoginModal from "./auth/LoginModal";
-import SigninModal from "./auth/SigninModal";
 import Logout from "./auth/Logout";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -69,11 +67,19 @@ class AppNavbar extends Component {
         >
           <Container>
             <NavbarBrand href="/">
+              {/* <Link className="nav-link" exact to="/" > */}
               Laboratório de Instrumentos Ambiental
+              {/* </Link> */}
             </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
+                <Link className="nav-link" to="/sobre">
+                  Sobre Nós
+                </Link>
+                <Link className="nav-link" to="/politica">
+                  Política de Uso
+                </Link>
                 {isAuthenticated ? authLinks : guestLinks}
               </Nav>
             </Collapse>

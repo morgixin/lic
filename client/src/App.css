@@ -1,6 +1,7 @@
 @import url("style/form.css");
 @import url("style/main-entry.css");
 @import url("style/last-entries.css");
+@import url("style/sidebar.css");
 
 .main-content {
   display: flex;
@@ -25,16 +26,4 @@ Input {
 
 .nav-reduce-margin {
   margin-bottom: 12px !important;
-}
-
-.sidebar {
-  position: absolute;
-  right: 7em;
-  max-width: 180px;
-  text-align: right;
-  background-color: white;
-}
-
-.sidebar-line > div {
-  border-top: 1px solid lightgray;
 }

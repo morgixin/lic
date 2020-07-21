@@ -99,7 +99,6 @@ class Login extends Component {
                 />
               </div>
               <Button
-                color="dark"
                 style={{ width: "fit-content", height: "fit-content" }}
                 className="btn-footer"
                 color="secondary"

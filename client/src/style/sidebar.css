@@ -1,0 +1,9 @@
+.sidebar {
+  max-width: 180px;
+  text-align: right;
+  background-color: white;
+}
+
+.sidebar-line > div {
+  border-top: 1px solid lightgray;
+}

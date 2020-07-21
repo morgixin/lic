@@ -16,6 +16,8 @@ import StationInfo from "./components/StationInfo.js";
 import EntryForm from "./components/EntryForm";
 import Login from "./components/auth/Login";
 import Signin from "./components/auth/Signin";
+import Sobre from "./components/Sobre";
+import Politica from "./components/Politica";
 
 class App extends Component {
   componentDidMount() {
@@ -33,21 +35,27 @@ class App extends Component {
                 <Route exact path="/inserir" component={EntryForm} />
                 <Route exact path="/entrar">
                   <Container
-                    className="mt-2"
-                    style={{ display: "flex", width: "820px" }}
+                    className="mt-3"
+                    style={{ display: "flex", width: "880px" }}
                   >
                     <Login />
                     <Signin />
                   </Container>
                 </Route>
-                {/* <Route exact path="/adms" component={AdmList} /> */}
                 <Route exact path="/">
                   <LoadUser />
-                  <TodayEntry />
-                  <EntryList />
+                  <Container style={{ display: "flex" }}>
+                    <div>
+                      <TodayEntry />
+                      <EntryList />
+                    </div>
+                    <StationInfo />
+                  </Container>
                 </Route>
+                <Route exact path="/sobre" component={Sobre} />
+                <Route exact path="/politica" component={Politica} />
               </div>
-              <StationInfo />
+              {/* <StationInfo /> */}
             </Container>
           </div>
         </Router>

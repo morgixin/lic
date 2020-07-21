@@ -5,7 +5,6 @@ import {
   // FormFeedback,
   Label,
   Input,
-  NavLink,
   Alert,
   Container,
 } from "reactstrap";
@@ -13,7 +12,6 @@ import { connect } from "react-redux";
 import { addEntry } from "../actions/obsActions";
 import { clearErrors } from "../actions/errorActions";
 import PropTypes from "prop-types";
-// import { Redirect } from "react-router-dom";
 
 class EntryModal extends Component {
   state = {
