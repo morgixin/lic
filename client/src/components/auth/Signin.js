@@ -12,7 +12,7 @@ export class Signin extends Component {
     nome: "",
     matricula: "",
     senha: "",
-    confSenha: "",
+    // confSenha: "",
     msg: null,
   };
 
@@ -23,15 +23,12 @@ export class Signin extends Component {
     clearErrors: PropTypes.func.isRequired,
   };
 
-  handleConfirmPass = () => {
-    const { senha, confSenha } = this.state;
+  // handleConfirmPass = () => {
+  //   const { senha, confSenha } = this.state;
 
-    // senha.length <= 2
-    //   ? this.setState({ msg: "Senha muito fraca" })
-    //   :
-    if (senha !== confSenha && confSenha !== "")
-      this.setState({ msg: "Senhas não conferem" });
-  };
+  //   if (senha !== confSenha && confSenha !== "")
+  //     this.setState({ msg: "Senhas não conferem" });
+  // };
 
   componentDidUpdate(prevProps) {
     const { error, isAuthenticated } = this.props;
@@ -57,16 +54,16 @@ export class Signin extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { nome, apelido, matricula, senha, confSenha } = this.state;
+    const { nome, apelido, matricula, senha /*, confSenha*/ } = this.state;
     const newUser = {
       nome,
       apelido,
       matricula,
       senha,
-      confSenha,
+      // confSenha,
     };
 
-    this.handleConfirmPass();
+    // this.handleConfirmPass();
 
     // Tentativa de logar
     this.props.register(newUser);
@@ -75,7 +72,7 @@ export class Signin extends Component {
   render() {
     return (
       <div>
-        <h2 className="h3 mb-3">Criar conta</h2>
+        <h2 className="h3 mb-3 title-simple">Criar conta</h2>
         <div style={{ marginLeft: "12px" }}>
           {this.state.msg ? (
             <Alert color="danger">{this.state.msg}</Alert>
@@ -119,13 +116,13 @@ export class Signin extends Component {
                 placeholder="Senha"
                 onChange={this.onChange}
               />
-              <Input
+              {/* <Input
                 type="password"
                 name="confSenha"
                 placeholder="Confirme sua senha"
                 className="mt-1"
                 onChange={this.onChange}
-              />
+              /> */}
             </div>
             <Button
               style={{ width: "fit-content", height: "fit-content" }}

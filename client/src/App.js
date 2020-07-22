@@ -18,6 +18,7 @@ import Login from "./components/auth/Login";
 import Signin from "./components/auth/Signin";
 import Sobre from "./components/Sobre";
 import Politica from "./components/Politica";
+import EditEntry from "./components/EditEntry";
 
 class App extends Component {
   componentDidMount() {
@@ -52,10 +53,10 @@ class App extends Component {
                     <StationInfo />
                   </Container>
                 </Route>
+                <Route exact path="/editar" component={EditEntry} />
                 <Route exact path="/sobre" component={Sobre} />
                 <Route exact path="/politica" component={Politica} />
               </div>
-              {/* <StationInfo /> */}
             </Container>
           </div>
         </Router>

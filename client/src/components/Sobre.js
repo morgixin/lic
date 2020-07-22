@@ -4,8 +4,8 @@ export class Sobre extends Component {
   render() {
     return (
       <div>
-        <h3>Quem Somos</h3>
-        <div className="ml-3" style={{ width: "800px" }}>
+        <h3 className="mt-3 mb-3 title-simple">Quem Somos</h3>
+        <div className="ml-3">
           <p>
             O LAPA, Laboratorio de Análises e Previsões Atmosféricas, iniciou
             suas atividades em 2007, a partir de um grupo formado por três

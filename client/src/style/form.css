@@ -1,10 +1,12 @@
+/* para forms de 4 colunas */
 .form-grid-4 {
   display: grid;
-  grid-template-columns: 180px 180px 180px 180px;
-  column-gap: 12px;
+  grid-template-columns: 200px 200px 200px 200px;
+  column-gap: 18px;
   row-gap: 18px;
 }
 
+/* para forms de 2 colunas */
 .form-grid-2 {
   display: grid;
   grid-template-columns: 180px 180px;
@@ -12,6 +14,7 @@
   row-gap: 24px;
 }
 
+/* posicionar o button ao final do form, na primeira coluna */
 .btn-footer {
   justify-content: start;
   grid-column: 1;

@@ -7,6 +7,10 @@ import {
   Nav,
   NavItem,
   Container,
+  DropdownMenu,
+  DropdownToggle,
+  UncontrolledDropdown,
+  DropdownItem,
 } from "reactstrap";
 import Logout from "./auth/Logout";
 import { connect } from "react-redux";
@@ -33,9 +37,23 @@ class AppNavbar extends Component {
     const authLinks = (
       <Fragment>
         <NavItem>
-          <Link className="nav-link" to="/inserir">
-            Inserir dados
-          </Link>
+          <UncontrolledDropdown setActiveFromChild>
+            <DropdownToggle className="nav-link" caret tag="a">
+              Atualizar
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem>
+                <Link className="nav-link" to="/inserir">
+                  Inserir dados
+                </Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link className="nav-link" to="/editar">
+                  Editar dados
+                </Link>
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
         </NavItem>
         <NavItem>
           <Logout />

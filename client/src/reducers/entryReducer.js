@@ -4,12 +4,14 @@ import {
   DELETE_ENTRY,
   ENTRIES_LOADING,
   ADD_ENTRY_FAIL,
+  UPDATE_ENTRY,
 } from "../actions/types";
 
 const initialState = {
   entries: [],
   loading: false,
   added: false,
+  updated: false,
 };
 
 export default function (state = initialState, action) {
@@ -25,6 +27,12 @@ export default function (state = initialState, action) {
         ...state,
         entries: [action.payload, ...state.entries],
         added: true,
+      };
+    case UPDATE_ENTRY:
+      return {
+        ...state,
+        entries: [action.payload, ...state.entries],
+        updated: true,
       };
     case DELETE_ENTRY:
       return {

@@ -74,7 +74,7 @@ class Login extends Component {
         }}
       >
         <div>
-          <h2 className="h3 mb-3">Entrar</h2>
+          <h2 className="h3 mb-3 title-simple">Entrar</h2>
           <div style={{ marginLeft: "12px" }}>
             {this.state.msg ? (
               <Alert color="danger">{this.state.msg}</Alert>

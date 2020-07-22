@@ -98,26 +98,26 @@ class EntryModal extends Component {
     return (
       <div>
         <Container>
-          <h2 className="h3">Inserir nova observação</h2>
+          <h2 className="h3 title-simple mb-3">Inserir nova observação</h2>
           <div style={{ marginLeft: "12px" }}>
             {this.state.msg ? (
               <Alert color="danger">{this.state.msg}</Alert>
             ) : null}
-            <Form
-              onSubmit={this.onSubmit}
-              /*style={{ width: "800px" }}*/
-              className="form-grid-4"
-            >
+            <Form onSubmit={this.onSubmit} className="form-grid-4">
               <div className="item">
                 <Label className="lead">Horário local da leitura</Label>
                 <Input
                   name="hora_leitura"
                   id="date-input"
-                  // type="datetime-local"
                   type="text"
                   placeholder="data"
-                  // onFocus="(this.type = 'datetime-local')"
-                  // onBlur={(this.type = "text")}
+                  onFocus={() =>
+                    (document.getElementById("date-input").type =
+                      "datetime-local")
+                  }
+                  onBlur={() =>
+                    (document.getElementById("date-input").type = "text")
+                  }
                   onChange={this.onChange}
                   required
                 />
@@ -215,7 +215,7 @@ class EntryModal extends Component {
                     type="text"
                     name="inten_vento"
                     id="vento-inten"
-                    placeholder="intensidade"
+                    placeholder="força"
                     onChange={this.onChange}
                     required
                   />
@@ -254,7 +254,6 @@ class EntryModal extends Component {
                   height: "fit-content",
                 }}
                 className="btn-footer"
-                color="secondary"
                 block
               >
                 Gravar dados

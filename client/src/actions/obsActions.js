@@ -5,8 +5,10 @@ import {
   DELETE_ENTRY,
   ENTRIES_LOADING,
   ADD_ENTRY_FAIL,
+  UPDATE_ENTRY,
 } from "../actions/types";
 import { returnErrors } from "./errorActions";
+import { tokenConfig } from "./authActions";
 
 export const getEntries = () => (dispatch) => {
   dispatch(setEntriesLoading());
@@ -23,18 +25,9 @@ export const getEntries = () => (dispatch) => {
     );
 };
 
-export const addEntry = (entry) => (dispatch) => {
-  // Headers
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  entry = JSON.stringify(entry);
-
+export const addEntry = (entry) => (dispatch, getState) => {
   axios
-    .post("/api/entries", entry, config)
+    .post("/api/entries", entry, tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: ADD_ENTRY,
@@ -49,6 +42,20 @@ export const addEntry = (entry) => (dispatch) => {
         type: ADD_ENTRY_FAIL,
       });
     });
+};
+
+export const updateEntry = (id) => (dispatch) => {
+  axios
+    .put(`/api/entries/${id}`)
+    .then((res) =>
+      dispatch({
+        type: UPDATE_ENTRY,
+        payload: id,
+      })
+    )
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 export const deleteEntry = (id) => (dispatch) => {

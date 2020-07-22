@@ -57,7 +57,7 @@ class Entries extends Component {
       <Container>
         <Table className="main-table-week">
           <thead>
-            <tr className="table-title-simple">
+            <tr className="title-simple">
               <th>Data</th>
               <th>Temp Ar/Máx/Min ºC</th>
               <th>Umidade Rel/Mín %</th>

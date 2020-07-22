@@ -9,7 +9,8 @@
   justify-content: space-between;
 }
 
-.table-title-simple * {
+.title-simple *,
+.title-simple {
   font-weight: 400;
 }
 
@@ -22,6 +23,7 @@ Input {
   border: 0 !important;
   border-bottom: lightgray solid 1px !important;
   border-radius: 0 !important;
+  margin-bottom: 6px;
 }
 
 .nav-reduce-margin {

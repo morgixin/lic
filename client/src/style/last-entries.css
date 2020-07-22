@@ -5,6 +5,13 @@
 
 .main-table-week {
   max-width: 800px !important;
-  margin-top: 2rem;
+  margin-top: 24px;
   margin-bottom: 0 !important;
 }
+
+/* .week-list-grid {
+  display: grid;
+  grid-template-columns: 88px 88px 88px 88px 88px 88px 88px 88px 88px 88px;
+  column-gap: 18px;
+  row-gap: 18px;
+} */
