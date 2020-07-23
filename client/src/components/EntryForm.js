@@ -54,7 +54,6 @@ class EntryForm extends Component {
 
     // go back to Home Page if added
     if (added) {
-      // window.location.hash = "/";
       this.redirectHandler();
     }
   }
