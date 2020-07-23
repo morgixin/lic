@@ -33,7 +33,6 @@ class App extends Component {
             <AppNavbar />
             <Container className="main-content">
               <div>
-                <Route exact path="/inserir" component={EntryForm} />
                 <Route exact path="/entrar">
                   <Container
                     className="mt-3"
@@ -53,6 +52,7 @@ class App extends Component {
                     <StationInfo />
                   </Container>
                 </Route>
+                <Route exact path="/inserir" component={EntryForm} />
                 <Route exact path="/editar" component={EditEntry} />
                 <Route exact path="/sobre" component={Sobre} />
                 <Route exact path="/politica" component={Politica} />
