@@ -26,8 +26,8 @@ export class Politica extends Component {
             229 Rio de Janeiro, RJ - Brasil.
           </p>
           <ul>
-            <li>telefone: +55 (21) 25663163</li>
-            <li>e-mail: lapa.cefet.rj@gmail.com</li>
+            <li>Telefone: +55 (21) 2566-3163</li>
+            <li>E-mail: lapa.cefet.rj@gmail.com</li>
           </ul>
         </div>
       </div>

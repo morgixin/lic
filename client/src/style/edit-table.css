@@ -1,0 +1,18 @@
+.btn-container-flex {
+  display: flex;
+  /* justify-content: space-between; */
+  width: 100%;
+}
+
+.table-limit-scroll tbody {
+  display: block;
+  max-height: 320px;
+  overflow-y: scroll;
+}
+
+.table-limit-scroll thead,
+.table-limit-scroll tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}

@@ -12,7 +12,7 @@ export class Signin extends Component {
     nome: "",
     matricula: "",
     senha: "",
-    // confSenha: "",
+    confSenha: "",
     msg: null,
   };
 
@@ -54,13 +54,13 @@ export class Signin extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { nome, apelido, matricula, senha /*, confSenha*/ } = this.state;
+    const { nome, apelido, matricula, senha, confSenha } = this.state;
     const newUser = {
       nome,
       apelido,
       matricula,
       senha,
-      // confSenha,
+      confSenha,
     };
 
     // this.handleConfirmPass();
@@ -116,13 +116,13 @@ export class Signin extends Component {
                 placeholder="Senha"
                 onChange={this.onChange}
               />
-              {/* <Input
+              <Input
                 type="password"
                 name="confSenha"
                 placeholder="Confirme sua senha"
                 className="mt-1"
                 onChange={this.onChange}
-              /> */}
+              />
             </div>
             <Button
               style={{ width: "fit-content", height: "fit-content" }}

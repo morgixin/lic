@@ -7,28 +7,21 @@ const jwt = require("jsonwebtoken");
 // Modelo de userinistrador
 const User = require("../../models/User");
 
-// /**
-//  * @route   GET api/users
-//  * @desc    Acessar Todos os Usuários
-//  * @access  Public
-//  */
-// router.get("/", (req, res) => {
-//   User.find()
-//     .sort({ nome: -1 })
-//     .then((users) => res.json(users));
-// });
-
 /**
  * @route   POST api/users
  * @desc    Criar Novo Usuário
  * @access  Private
  */
 router.post("/", (req, res) => {
-  const { nome, apelido, matricula, senha } = req.body;
+  const { nome, apelido, matricula, senha, confSenha } = req.body;
 
   // Validando
-  if (!nome || !apelido || !matricula || !senha) {
+  if (!nome || !apelido || !matricula || !senha || !confSenha) {
     return res.status(400).json({ msg: "Preencha todos os campos" });
+  }
+
+  if (senha != confSenha) {
+    return res.status(400).json({ msg: "As senhas não conferem" });
   }
 
   // Checando existência do user

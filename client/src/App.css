@@ -2,6 +2,7 @@
 @import url("style/main-entry.css");
 @import url("style/last-entries.css");
 @import url("style/sidebar.css");
+@import url("style/edit-table.css");
 
 .main-content {
   display: flex;
