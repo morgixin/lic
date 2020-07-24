@@ -19,6 +19,7 @@ class Login extends Component {
     apelido: "",
     senha: "",
     msg: null,
+    redirect: false,
   };
 
   static propTypes = {
@@ -27,6 +28,15 @@ class Login extends Component {
     login: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired,
   };
+
+  redirectHandler = () => {
+    this.setState({ redirect: true });
+    this.renderRedirect();
+  };
+
+  renderRedirect() {
+    if (this.state.redirect) return <Redirect exact to="/" />;
+  }
 
   componentDidUpdate(prevProps) {
     const { error, isAuthenticated } = this.props;
@@ -42,7 +52,7 @@ class Login extends Component {
 
     // Se autenticado, fecha o modal
     if (isAuthenticated) {
-      window.location.href = "/";
+      this.redirectHandler();
     }
   }
 
@@ -109,6 +119,7 @@ class Login extends Component {
             </Form>
           </div>
         </div>
+        {this.renderRedirect()}
       </div>
     );
   }

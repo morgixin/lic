@@ -14,6 +14,7 @@ export class Signin extends Component {
     senha: "",
     confSenha: "",
     msg: null,
+    redirect: false,
   };
 
   static propTypes = {
@@ -23,12 +24,14 @@ export class Signin extends Component {
     clearErrors: PropTypes.func.isRequired,
   };
 
-  // handleConfirmPass = () => {
-  //   const { senha, confSenha } = this.state;
+  redirectHandler = () => {
+    this.setState({ redirect: true });
+    this.renderRedirect();
+  };
 
-  //   if (senha !== confSenha && confSenha !== "")
-  //     this.setState({ msg: "Senhas não conferem" });
-  // };
+  renderRedirect() {
+    if (this.state.redirect) return <Redirect exact to="/" />;
+  }
 
   componentDidUpdate(prevProps) {
     const { error, isAuthenticated } = this.props;
@@ -44,7 +47,7 @@ export class Signin extends Component {
 
     // Se autenticado, fecha o modal
     if (isAuthenticated) {
-      window.location.href = "/";
+      this.redirectHandler();
     }
   }
 
@@ -62,8 +65,6 @@ export class Signin extends Component {
       senha,
       confSenha,
     };
-
-    // this.handleConfirmPass();
 
     // Tentativa de logar
     this.props.register(newUser);
@@ -134,6 +135,7 @@ export class Signin extends Component {
             </Button>
           </Form>
         </div>
+        {this.renderRedirect()}
       </div>
     );
   }
