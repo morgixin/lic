@@ -4,6 +4,7 @@ import { Label, Form, Input, Button, Alert } from "reactstrap";
 import { register } from "../../actions/authActions";
 import { clearErrors } from "../../actions/errorActions";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
 export class Signin extends Component {
   state = {
