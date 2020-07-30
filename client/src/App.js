@@ -19,6 +19,7 @@ import Signin from "./components/auth/Signin";
 import Sobre from "./components/Sobre";
 import Politica from "./components/Politica";
 import EditEntry from "./components/EditEntry";
+import BackHome from "./components/BackHome";
 
 class App extends Component {
   componentDidMount() {
@@ -33,6 +34,16 @@ class App extends Component {
             <AppNavbar />
             <Container className="main-content">
               <div>
+                <Route exact path="/">
+                  {/* <LoadUser /> */}
+                  <Container style={{ display: "flex" }}>
+                    <div>
+                      <TodayEntry />
+                      <EntryList />
+                    </div>
+                    <StationInfo />
+                  </Container>
+                </Route>
                 <Route exact path="/entrar">
                   <Container
                     className="mt-3"
@@ -42,20 +53,11 @@ class App extends Component {
                     <Signin />
                   </Container>
                 </Route>
-                <Route exact path="/">
-                  <LoadUser />
-                  <Container style={{ display: "flex" }}>
-                    <div>
-                      <TodayEntry />
-                      <EntryList />
-                    </div>
-                    <StationInfo />
-                  </Container>
-                </Route>
                 <Route exact path="/inserir" component={EntryForm} />
                 <Route exact path="/editar" component={EditEntry} />
                 <Route exact path="/sobre" component={Sobre} />
                 <Route exact path="/politica" component={Politica} />
+                <BackHome />
               </div>
             </Container>
           </div>

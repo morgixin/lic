@@ -65,8 +65,22 @@ router.post("/", (req, res) => {
  * @access  Private
  */
 
-// router.put("/:id", (req, res) => {
-//   Entry.findById(req.params.id).then((entry) => entry.update());
-// });
+router.put("/:id", (req, res) => {
+  const {
+    hora_leitura,
+    pressao_atm,
+    temp_ar,
+    temp_min,
+    temp_max,
+    umid_rel,
+    umid_min,
+    rad_solar,
+    chuva_ac_dia,
+    inten_vento,
+    direc_vento,
+  } = req.body;
+
+  Entry.findById(req.params.id).then((entry) => entry.update());
+});
 
 module.exports = router;

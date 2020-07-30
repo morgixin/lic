@@ -33,9 +33,24 @@ class AppNavbar extends Component {
   };
 
   render() {
-    const { isAuthenticated } = this.props.auth;
+    const { isAuthenticated, user } = this.props.auth;
     const authLinks = (
       <Fragment>
+        <NavItem>
+          <span className="navbar-text mr-3">
+            {user ? `Bem vindo ${user.nome}` : ""}
+          </span>
+        </NavItem>
+        <NavItem>
+          <Link className="nav-link" to="/sobre">
+            Sobre Nós
+          </Link>
+        </NavItem>
+        <NavItem>
+          <Link className="nav-link" to="/politica">
+            Política de Uso
+          </Link>
+        </NavItem>
         <NavItem>
           <UncontrolledDropdown setActiveFromChild>
             <DropdownToggle className="nav-link" caret tag="a">
@@ -64,6 +79,16 @@ class AppNavbar extends Component {
     const guestLinks = (
       <Fragment>
         <NavItem>
+          <Link className="nav-link" to="/sobre">
+            Sobre Nós
+          </Link>
+        </NavItem>
+        <NavItem>
+          <Link className="nav-link" to="/politica">
+            Política de Uso
+          </Link>
+        </NavItem>
+        <NavItem>
           <Link className="nav-link" to="/entrar">
             Entrar
           </Link>
@@ -72,38 +97,28 @@ class AppNavbar extends Component {
     );
 
     return (
-      <div>
-        <Navbar
-          color="light"
-          light
-          expand="sm"
-          className="mb-4 nav-reduce-margin"
-          style={{
-            borderBottom: "6px solid lightblue",
-            position: "sticky",
-          }}
-        >
-          <Container>
-            <NavbarBrand href="/">
-              {/* <Link className="nav-link" exact to="/" > */}
-              Laboratório de Instrumentos Ambiental
-              {/* </Link> */}
-            </NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="ml-auto" navbar>
-                <Link className="nav-link" to="/sobre">
-                  Sobre Nós
-                </Link>
-                <Link className="nav-link" to="/politica">
-                  Política de Uso
-                </Link>
-                {isAuthenticated ? authLinks : guestLinks}
-              </Nav>
-            </Collapse>
-          </Container>
-        </Navbar>
-      </div>
+      <Navbar
+        color="light"
+        light
+        expand="sm"
+        className="nav-reduce-margin"
+        style={{
+          borderBottom: "6px solid lightblue",
+          position: "sticky",
+        }}
+      >
+        <Container>
+          <NavbarBrand href="/">
+            Laboratório de Instrumentos Ambientais
+          </NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" style={{ maxWidth: "800px" }} navbar>
+              {isAuthenticated ? authLinks : guestLinks}
+            </Nav>
+          </Collapse>
+        </Container>
+      </Navbar>
     );
   }
 }

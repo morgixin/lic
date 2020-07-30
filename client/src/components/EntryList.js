@@ -35,15 +35,18 @@ class Entries extends Component {
             }).format(new Date(entry.hora_leitura))}
           </td>
           <td>
-            {entry.temp_ar} / {entry.temp_max} / {entry.temp_min}
+            {new Intl.DateTimeFormat("pt-BR", {
+              hour: "2-digit",
+              minute: "2-digit",
+            }).format(new Date(entry.hora_leitura))}
           </td>
-          <td>
-            {entry.umid_rel} / {entry.umid_min}
-          </td>
+          <td>{entry.temp_max}</td>
+          <td>{entry.temp_min}</td>
+          <td>{entry.umid_rel}</td>
+          <td>{entry.umid_min}</td>
           <td>{entry.chuva_ac_dia} </td>
-          <td>
-            {entry.inten_vento} {entry.direc_vento}
-          </td>
+          <td>{entry.inten_vento}</td>
+          <td>{entry.direc_vento}</td>
           <td>{entry.pressao_atm}</td>
           <td>{entry.rad_solar}</td>
         </tr>
@@ -54,22 +57,35 @@ class Entries extends Component {
 
   render() {
     return (
-      <Container>
-        <Table className="main-table-week">
-          <thead>
+      <div>
+        <Table className="main-table-week" striped>
+          <thead align="center">
             <tr className="title-simple">
-              <th>Data</th>
-              <th>Temp Ar/Máx/Min ºC</th>
-              <th>Umidade Rel/Mín %</th>
-              <th>Chuva Ac. 24h mm</th>
-              <th>Vento km/h</th>
-              <th>Pressão hPa</th>
-              <th>Radiação Solar W/m2</th>
+              <th colSpan="2">Data</th>
+              <th colSpan="2">Temperatura (ºC)</th>
+              <th colSpan="2">Umidade (%)</th>
+              <th colSpan="1">Chuva (mm)</th>
+              <th colSpan="2">Vento (km/h)</th>
+              <th colSpan="1">Pressão</th>
+              <th colSpan="1">Radiação Solar</th>
+            </tr>
+            <tr className="title-simple">
+              <td>Dia</td>
+              <td>Hora</td>
+              <td>Máx</td>
+              <td>Mín</td>
+              <td>Rel</td>
+              <td>Mín</td>
+              <td>24h</td>
+              <td>Força</td>
+              <td>Direção</td>
+              <td>hPa</td>
+              <td>W/m²</td>
             </tr>
           </thead>
           <tbody>{this.rows()}</tbody>
         </Table>
-      </Container>
+      </div>
     );
   }
 }

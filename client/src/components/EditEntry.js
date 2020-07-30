@@ -23,13 +23,6 @@ export class EditEntry extends Component {
     document.getElementById("save-table-changes").style.display = "block";
   };
 
-  saveEdit = () => {
-    const { content } = document.getElementsByClassName("table-content");
-    content.map((e) => (e.isContentEditable = false));
-    document.getElementById("edit-table-content").style.display = "block";
-    document.getElementById("save-table-changes").style.display = "none";
-  };
-
   rows = () => {
     const { entries } = this.props.entry;
 
@@ -100,7 +93,7 @@ export class EditEntry extends Component {
         >
           Editar
         </Button>
-        <Table className="table-limit-scroll">
+        <Table className="table-limit-scroll" striped>
           <thead>
             <tr className="title-simple">
               <th>Data</th>
