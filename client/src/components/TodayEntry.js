@@ -28,8 +28,16 @@ export class TodayEntry extends Component {
       })
       .map((entry) => (
         <Container className="main-content-entry" style={{ padding: "0 8px" }}>
-          <p style={{ color: "#aaa", fontSize: "smaller" }}>
-            {Date(entry.hora_leitura)}
+          <p style={{ fontSize: "smaller", color: "#aaa" }}>
+            Data do envio:{" "}
+            {new Intl.DateTimeFormat("pt-BR", {
+              month: "long",
+              weekday: "long",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+              timeZoneName: "short",
+            }).format(new Date(entry.hora_leitura))}
           </p>
           <Table className="main-content-table">
             <thead>
@@ -67,7 +75,12 @@ export class TodayEntry extends Component {
                 <td className="main-content-subsection">
                   <div style={{ color: "#418ABD" }} className="subsection-row">
                     <p className="subsection-value">{entry.inten_vento}</p>
-                    <p style={{ marginLeft: "6px" }}>{entry.direc_vento}</p>
+                    <p
+                      className="subsection-value"
+                      style={{ marginLeft: "6px" }}
+                    >
+                      {entry.direc_vento}
+                    </p>
                   </div>
                 </td>
 

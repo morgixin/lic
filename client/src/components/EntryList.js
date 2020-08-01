@@ -27,7 +27,7 @@ class Entries extends Component {
       })
       .slice(entries.length - 6, entries.length - 1)
       .map((entry) => (
-        <tr key={entry._id}>
+        <tr key={entry._id} align="center">
           <td>
             {new Intl.DateTimeFormat("pt-BR", {
               month: "2-digit",
@@ -58,9 +58,9 @@ class Entries extends Component {
   render() {
     return (
       <div>
-        <Table className="main-table-week" striped>
-          <thead align="center">
-            <tr className="title-simple">
+        <Table className="main-table-week" striped bordered>
+          <thead>
+            <tr className="title-simple" align="center">
               <th colSpan="2">Data</th>
               <th colSpan="2">Temperatura (ºC)</th>
               <th colSpan="2">Umidade (%)</th>
@@ -69,7 +69,7 @@ class Entries extends Component {
               <th colSpan="1">Pressão</th>
               <th colSpan="1">Radiação Solar</th>
             </tr>
-            <tr className="title-simple">
+            <tr className="title-simple table-sm" align="center">
               <td>Dia</td>
               <td>Hora</td>
               <td>Máx</td>
@@ -83,7 +83,7 @@ class Entries extends Component {
               <td>W/m²</td>
             </tr>
           </thead>
-          <tbody>{this.rows()}</tbody>
+          <tbody className="table-sm">{this.rows()}</tbody>
         </Table>
       </div>
     );

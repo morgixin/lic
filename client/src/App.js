@@ -53,10 +53,10 @@ class App extends Component {
                     <Signin />
                   </Container>
                 </Route>
-                <Route exact path="/inserir" component={EntryForm} />
-                <Route exact path="/editar" component={EditEntry} />
-                <Route exact path="/sobre" component={Sobre} />
-                <Route exact path="/politica" component={Politica} />
+                <Route path="/inserir" component={EntryForm} />
+                <Route path="/editar" component={EditEntry} />
+                <Route path="/sobre" component={Sobre} />
+                <Route path="/politica" component={Politica} />
                 <BackHome />
               </div>
             </Container>

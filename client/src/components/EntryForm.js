@@ -64,7 +64,7 @@ class EntryForm extends Component {
   };
 
   renderRedirect() {
-    if (this.state.redirect) return <Redirect exact to="/" />;
+    if (this.state.redirect) return <Redirect exact to={{ pathname: "/" }} />;
   }
 
   onChange = (e) => {
