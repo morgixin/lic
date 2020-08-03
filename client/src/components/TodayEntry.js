@@ -37,6 +37,7 @@ export class TodayEntry extends Component {
               hour: "2-digit",
               minute: "2-digit",
               timeZoneName: "short",
+              dayPeriod: "short",
             }).format(new Date(entry.hora_leitura))}
           </p>
           <Table className="main-content-table">

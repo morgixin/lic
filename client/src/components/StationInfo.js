@@ -11,8 +11,18 @@ class StationInfo extends Component {
           </div>
           <div className="sidebar-line">
             <div className="pt-3">
-              <p>Laboratório de Instrumentos, Rio de Janeiro</p>
-              <p>Lat: 22º54'11" - Long: 43º13'28.9" - Elev: 33 m</p>
+              <p>
+                Laboratório de Instrumentos
+                <br />
+                CEFET/Maracanã, Rio de Janeiro
+              </p>
+              <p>
+                Lat: 22º54'11"
+                <br />
+                Long: 43º13'28.9"
+                <br />
+                Elev: 33 m
+              </p>
             </div>
           </div>
           <div className="sidebar-line">

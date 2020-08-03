@@ -1,14 +1,7 @@
 .main-table-week * {
-  /* max-width: px; */
   font-size: 14px;
 }
 
 .main-table-week > thead > .title-simple * {
   padding: 6px 0px !important;
-}
-
-.main-table-week {
-  max-width: 800px !important;
-  margin-top: 24px;
-  margin-bottom: 0 !important;
 }

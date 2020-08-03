@@ -32,6 +32,7 @@ class Entries extends Component {
             {new Intl.DateTimeFormat("pt-BR", {
               month: "2-digit",
               day: "2-digit",
+              year: "numeric",
             }).format(new Date(entry.hora_leitura))}
           </td>
           <td>
@@ -42,7 +43,6 @@ class Entries extends Component {
           </td>
           <td>{entry.temp_max}</td>
           <td>{entry.temp_min}</td>
-          <td>{entry.umid_rel}</td>
           <td>{entry.umid_min}</td>
           <td>{entry.chuva_ac_dia} </td>
           <td>{entry.inten_vento}</td>
@@ -58,12 +58,17 @@ class Entries extends Component {
   render() {
     return (
       <div>
-        <Table className="main-table-week" striped bordered>
+        <p>Últimas 5 observações</p>
+        <Table className="main-table-week" striped bordered responsive>
           <thead>
-            <tr className="title-simple" align="center">
+            <tr
+              className="title-simple"
+              align="center"
+              style={{ borderBottom: "1px solid lightgray" }}
+            >
               <th colSpan="2">Data</th>
               <th colSpan="2">Temperatura (ºC)</th>
-              <th colSpan="2">Umidade (%)</th>
+              <th colSpan="1">Umidade Relativa (%)</th>
               <th colSpan="1">Chuva (mm)</th>
               <th colSpan="2">Vento (km/h)</th>
               <th colSpan="1">Pressão</th>
@@ -74,7 +79,6 @@ class Entries extends Component {
               <td>Hora</td>
               <td>Máx</td>
               <td>Mín</td>
-              <td>Rel</td>
               <td>Mín</td>
               <td>24h</td>
               <td>Força</td>
