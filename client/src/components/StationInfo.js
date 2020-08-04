@@ -17,11 +17,11 @@ class StationInfo extends Component {
                 CEFET/Maracanã, Rio de Janeiro
               </p>
               <p>
-                Lat: 22º54'11"
+                Lat: 22º 54' 11"
                 <br />
-                Long: 43º13'28.9"
+                Long: 43º 13' 28.9"
                 <br />
-                Elev: 33 m
+                Elev: 33m
               </p>
             </div>
           </div>

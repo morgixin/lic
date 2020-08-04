@@ -1,5 +1,17 @@
 import React, { Component } from "react";
-import { Jumbotron, Container, Table } from "reactstrap";
+import {
+  Jumbotron,
+  Container,
+  Table,
+  Button,
+  UncontrolledPopover,
+  PopoverHeader,
+  PopoverBody,
+  DropdownToggle,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 import { connect } from "react-redux";
 import { getEntries } from "../actions/obsActions";
 import PropTypes from "prop-types";
@@ -28,19 +40,21 @@ export class TodayEntry extends Component {
       })
       .map((entry) => (
         <Container className="main-content-entry" style={{ padding: "0 8px" }}>
-          <p style={{ fontSize: "smaller", color: "#aaa" }}>
-            Data do envio:{" "}
-            {new Intl.DateTimeFormat("pt-BR", {
-              month: "long",
-              weekday: "long",
-              day: "2-digit",
-              hour: "2-digit",
-              minute: "2-digit",
-              timeZoneName: "short",
-              dayPeriod: "short",
-            }).format(new Date(entry.hora_leitura))}
-          </p>
-          <Table className="main-content-table">
+          <div className="small-text">
+            <p>
+              Data do envio:{" "}
+              {new Intl.DateTimeFormat("pt-BR", {
+                month: "long",
+                weekday: "long",
+                day: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
+                timeZoneName: "short",
+              }).format(new Date(entry.hora_leitura))}{" "}
+              Tempo presente: {entry.tempo_presente}
+            </p>
+          </div>
+          <Table>
             <thead>
               <tr>
                 <th className="subsection-title">Temperatura do ar (ºC)</th>
@@ -49,7 +63,7 @@ export class TodayEntry extends Component {
                 <th className="subsection-title">Vento (km/h)</th>
                 <th className="subsection-title">Pressão Atmosférica (hPa)</th>
                 <th className="subsection-title">
-                  Radiação Solar Global (W/m2)
+                  Radiação Solar Global (W/m²)
                 </th>
               </tr>
             </thead>
@@ -57,13 +71,46 @@ export class TodayEntry extends Component {
               <tr>
                 <td className="main-content-subsection">
                   <div style={{ color: "#ED6440" }} className="subsection-row">
-                    <p className="subsection-value">{entry.temp_ar}</p>
+                    <UncontrolledDropdown>
+                      <p className="subsection-value dropdown-toggle-flex">
+                        <DropdownToggle
+                          tag="span"
+                          className="dropdown-toggle"
+                          caret
+                        >
+                          {entry.temp_ar}
+                        </DropdownToggle>
+                      </p>
+                      <DropdownMenu>
+                        <DropdownItem disabled>
+                          Mínima: {entry.temp_min}
+                        </DropdownItem>
+                        <DropdownItem disabled>
+                          Máxima: {entry.temp_max}
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
                   </div>
                 </td>
 
                 <td className="main-content-subsection">
                   <div style={{ color: "#76CDCE" }} className="subsection-row">
-                    <p className="subsection-value">{entry.umid_rel}</p>
+                    <UncontrolledDropdown>
+                      <p className="subsection-value dropdown-toggle-flex">
+                        <DropdownToggle
+                          tag="span"
+                          className="dropdown-toggle"
+                          caret
+                        >
+                          {entry.umid_rel}
+                        </DropdownToggle>
+                      </p>
+                      <DropdownMenu>
+                        <DropdownItem disabled>
+                          Mínima: {entry.umid_min}
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
                   </div>
                 </td>
 

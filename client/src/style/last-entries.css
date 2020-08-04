@@ -1,7 +1,17 @@
+/* .main-table-week {
+  width: 100%;
+} */
+
 .main-table-week * {
   font-size: 14px;
+  width: fit-content;
 }
 
 .main-table-week > thead > .title-simple * {
   padding: 6px 0px !important;
+  width: fit-content;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #e9ecef !important;
 }

@@ -61,7 +61,7 @@ export class EditEntry extends Component {
               <div className="table-content">{entry.umid_min}</div>
             </td>
             <td>
-              <div className="table-content">{entry.chuva_ac_dia}</div>{" "}
+              <div className="table-content">{entry.chuva_ac_dia}</div>
             </td>
             <td>
               <div className="table-content">{entry.inten_vento}</div>

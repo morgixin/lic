@@ -30,3 +30,13 @@ Input {
 .nav-reduce-margin {
   margin-bottom: 12px !important;
 }
+
+.clear-btn {
+  background-color: none;
+  color: gray;
+}
+
+.small-text > * {
+  font-size: smaller;
+  color: gray;
+}

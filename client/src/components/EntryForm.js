@@ -28,6 +28,7 @@ class EntryForm extends Component {
     chuva_ac_dia: 0,
     inten_vento: 0,
     direc_vento: "",
+    tempo_presente: "",
     msg: null,
     redirect: false,
   };
@@ -75,7 +76,7 @@ class EntryForm extends Component {
     e.preventDefault();
 
     const { isAuthenticated, user } = this.props.auth;
-    const userId = user.id;
+    const nome_usuario = user.nome;
     const {
       hora_leitura,
       pressao_atm,
@@ -88,6 +89,7 @@ class EntryForm extends Component {
       chuva_ac_dia,
       inten_vento,
       direc_vento,
+      tempo_presente,
     } = this.state;
     const newEntry = {
       hora_leitura,
@@ -101,7 +103,8 @@ class EntryForm extends Component {
       chuva_ac_dia,
       inten_vento,
       direc_vento,
-      userId,
+      tempo_presente,
+      nome_usuario,
     };
 
     // Adiciona a entrada pelo addEntry
@@ -177,6 +180,17 @@ class EntryForm extends Component {
                   required
                 />
               </div>
+            </div>
+            <div className="item">
+              <Label className="lead">Tempo Presente</Label>
+              <Input
+                type="text"
+                name="tempo_presente"
+                id="tempo_presente"
+                placeholder="ensolarado"
+                onChange={this.onChange}
+                required
+              />
             </div>
             <div className="item">
               <Label className="lead">Umidade relativa do ar</Label>
@@ -266,7 +280,7 @@ class EntryForm extends Component {
                 width: "fit-content",
                 height: "fit-content",
               }}
-              className="btn-footer"
+              className="mt-3 btn-footer nav-link"
               block
             >
               Gravar dados

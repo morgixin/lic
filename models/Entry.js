@@ -52,10 +52,14 @@ const EntrySchema = new Schema({
     required: true,
     min: 0,
   },
-  // nome_usuario_resp: {
-  //   type: String,
-  //   required: true,
-  // },
+  tempo_presente: {
+    type: String,
+    required: true,
+  },
+  nome_usuario: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = Entry = mongoose.model("entry", EntrySchema);

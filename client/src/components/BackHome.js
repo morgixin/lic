@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { Button } from "reactstrap";
-import { useLocation } from "react-router-dom";
+import { PropTypes } from "prop-types";
+import { withRouter } from "react-router-dom";
 
 export class BackHome extends Component {
   state = {
     redirect: false,
+  };
+
+  static propTypes = {
+    location: PropTypes.object.isRequired,
   };
 
   redirectHandler = () => {
@@ -21,8 +26,9 @@ export class BackHome extends Component {
   }
 
   render() {
-    // let location = useLocation();
-    switch (window.location.pathname) {
+    const { location } = this.props;
+
+    switch (location.pathname) {
       case "/editar":
       case "/entrar":
       case "/politica":
@@ -32,7 +38,7 @@ export class BackHome extends Component {
         return (
           <div>
             <Button
-              className="mt-3"
+              className="mt-3 btn-clear"
               style={{
                 width: "fit-content",
                 height: "fit-content",
@@ -51,4 +57,4 @@ export class BackHome extends Component {
   }
 }
 
-export default BackHome;
+export default withRouter(BackHome);

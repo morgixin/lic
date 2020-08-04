@@ -43,7 +43,7 @@ class App extends Component {
                     <StationInfo />
                   </Container>
                 </Route>
-                <Route exact path="/entrar">
+                <Route strict sensitive path="/entrar">
                   <Container
                     className="mt-3"
                     style={{ display: "flex", width: "880px" }}

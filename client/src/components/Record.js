@@ -2,13 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getEntries } from "../actions/obsActions";
-import {
-  ListGroup,
-  ListGroupItemHeading,
-  ListGroupItem,
-  ListGroupItemText,
-  Table,
-} from "reactstrap";
+import { Table } from "reactstrap";
 
 export class Record extends Component {
   static propTypes = {
@@ -69,7 +63,6 @@ export class Record extends Component {
             className="title-simple"
             align="center"
             style={{ borderBottom: "1px solid lightgray" }}
-            className="title-simple"
           >
             <th colSpan="2">Data</th>
             <th colSpan="2">Temperatura (ºC)</th>

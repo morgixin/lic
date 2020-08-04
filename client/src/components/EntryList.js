@@ -58,9 +58,7 @@ class Entries extends Component {
   render() {
     return (
       <div>
-        <p style={{ fontSize: "smaller", color: "#aaa" }}>
-          Últimas 5 observações
-        </p>
+        <p style={{ color: "gray" }}>Últimas observações</p>
         <Table className="main-table-week" striped bordered responsive>
           <thead>
             <tr
@@ -70,7 +68,7 @@ class Entries extends Component {
             >
               <th colSpan="2">Data</th>
               <th colSpan="2">Temperatura (ºC)</th>
-              <th colSpan="1">Umidade Relativa (%)</th>
+              <th colSpan="1">Umidade Rel (%)</th>
               <th colSpan="1">Chuva (mm)</th>
               <th colSpan="2">Vento (km/h)</th>
               <th colSpan="1">Pressão</th>
@@ -89,7 +87,9 @@ class Entries extends Component {
               <td>W/m²</td>
             </tr>
           </thead>
-          <tbody className="table-sm">{this.rows()}</tbody>
+          <tbody className="table-sm" style={{ maxHeight: "180px" }}>
+            {this.rows()}
+          </tbody>
         </Table>
       </div>
     );
