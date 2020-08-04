@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Table } from "reactstrap";
+import { Table } from "reactstrap";
 import { connect } from "react-redux";
 import { getEntries } from "../actions/obsActions";
 import PropTypes from "prop-types";
@@ -58,7 +58,9 @@ class Entries extends Component {
   render() {
     return (
       <div>
-        <p>Últimas 5 observações</p>
+        <p style={{ fontSize: "smaller", color: "#aaa" }}>
+          Últimas 5 observações
+        </p>
         <Table className="main-table-week" striped bordered responsive>
           <thead>
             <tr

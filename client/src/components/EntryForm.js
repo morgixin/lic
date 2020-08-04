@@ -74,6 +74,8 @@ class EntryForm extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
+    const { isAuthenticated, user } = this.props.auth;
+    const userId = user.id;
     const {
       hora_leitura,
       pressao_atm,
@@ -99,10 +101,11 @@ class EntryForm extends Component {
       chuva_ac_dia,
       inten_vento,
       direc_vento,
+      userId,
     };
 
     // Adiciona a entrada pelo addEntry
-    this.props.addEntry(newEntry);
+    if (isAuthenticated) this.props.addEntry(newEntry);
   };
 
   render() {
@@ -281,6 +284,7 @@ const mapStateToProps = (state) => ({
   error: state.error,
   isAuthenticated: state.auth.isAuthenticated,
   added: state.entry.added,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { addEntry, clearErrors })(EntryForm);

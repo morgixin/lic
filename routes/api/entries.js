@@ -35,6 +35,8 @@ router.post("/", (req, res) => {
     direc_vento,
   } = req.body;
 
+  // const { nomeUsuario } = req.headers;
+
   Entry.findOne({ hora_leitura }).then((isMatch) => {
     if (isMatch)
       return res

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import AppNavbar from "./components/AppNavbar";
 import EntryList from "./components/EntryList";
 import { Container } from "reactstrap";
-import LoadUser from "./components/LoadUser";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -20,6 +19,7 @@ import Sobre from "./components/Sobre";
 import Politica from "./components/Politica";
 import EditEntry from "./components/EditEntry";
 import BackHome from "./components/BackHome";
+import Record from "./components/Record";
 
 class App extends Component {
   componentDidMount() {
@@ -35,7 +35,6 @@ class App extends Component {
             <Container className="main-content">
               <div>
                 <Route exact path="/">
-                  {/* <LoadUser /> */}
                   <Container style={{ display: "flex" }}>
                     <div>
                       <TodayEntry />
@@ -57,6 +56,7 @@ class App extends Component {
                 <Route path="/editar" component={EditEntry} />
                 <Route path="/sobre" component={Sobre} />
                 <Route path="/politica" component={Politica} />
+                <Route path="/relatorio" component={Record} />
                 <BackHome />
               </div>
             </Container>
