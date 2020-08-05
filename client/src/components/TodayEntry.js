@@ -56,10 +56,8 @@ export class TodayEntry extends Component {
                 <th className="subsection-title">Umidade Relativa (%)</th>
                 <th className="subsection-title">Chuva Total 24h (mm)</th>
                 <th className="subsection-title">Vento (km/h)</th>
-                <th className="subsection-title">Pressão Atmosférica (hPa)</th>
-                <th className="subsection-title">
-                  Radiação Solar Global (W/m²)
-                </th>
+                <th className="subsection-title">Pressão (hPa)</th>
+                <th className="subsection-title">Radiação Solar (W/m²)</th>
               </tr>
             </thead>
             <tbody>

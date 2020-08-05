@@ -31,6 +31,7 @@ export class Record extends Component {
             {new Intl.DateTimeFormat("pt-BR", {
               month: "2-digit",
               day: "2-digit",
+              year: "numeric",
             }).format(new Date(entry.hora_leitura))}
           </td>
           <td>
@@ -49,7 +50,7 @@ export class Record extends Component {
           <td>{entry.rad_solar}</td>
           <td>{entry.tempo_presente}</td>
           <td>{entry.nome_usuario}</td>
-          <td>{entry.mat_usuario}</td>
+          {/* <td>{entry.mat_usuario}</td> */}
         </tr>
       ));
 
@@ -73,7 +74,7 @@ export class Record extends Component {
             <th colSpan="1">Pressão</th>
             <th colSpan="1">Radiação Solar</th>
             <th colSpan="1">Tempo Presente</th>
-            <th colSpan="2">Usuário</th>
+            <th colSpan="1">Usuário</th>
           </tr>
           <tr className="title-simple" align="center">
             <td>Dia</td>
@@ -88,7 +89,7 @@ export class Record extends Component {
             <td>W/m²</td>
             <td> </td>
             <td>Nome</td>
-            <td>Matrícula</td>
+            {/* <td>Matrícula</td> */}
           </tr>
         </thead>
         <tbody>{this.rows()}</tbody>
