@@ -76,7 +76,7 @@ class EntryForm extends Component {
     e.preventDefault();
 
     const { isAuthenticated, user } = this.props.auth;
-    const nome_usuario = user.nome;
+    const { nome, matricula } = user;
     const {
       hora_leitura,
       pressao_atm,
@@ -104,7 +104,8 @@ class EntryForm extends Component {
       inten_vento,
       direc_vento,
       tempo_presente,
-      nome_usuario,
+      nome,
+      matricula,
     };
 
     // Adiciona a entrada pelo addEntry

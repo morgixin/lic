@@ -4,12 +4,6 @@
   justify-content: space-between;
 }
 
-/* 
-.main-content-entry > .small-text {
-  display: flex;
-  justify-content: space-between;
-} */
-
 .subsection-title {
   border: 0px !important;
   font-weight: 400;
@@ -37,6 +31,7 @@
 
 .subsection-value {
   font-size: 2rem;
+  margin-top: 1rem;
 }
 
 .subsection-row,

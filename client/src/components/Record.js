@@ -31,7 +31,6 @@ export class Record extends Component {
             {new Intl.DateTimeFormat("pt-BR", {
               month: "2-digit",
               day: "2-digit",
-              year: "numeric",
             }).format(new Date(entry.hora_leitura))}
           </td>
           <td>
@@ -48,7 +47,9 @@ export class Record extends Component {
           <td>{entry.direc_vento}</td>
           <td>{entry.pressao_atm}</td>
           <td>{entry.rad_solar}</td>
-          {/* <td>{entry.userId}</td> */}
+          <td>{entry.tempo_presente}</td>
+          <td>{entry.nome_usuario}</td>
+          <td>{entry.mat_usuario}</td>
         </tr>
       ));
 
@@ -57,7 +58,7 @@ export class Record extends Component {
 
   render() {
     return (
-      <Table className="table-limit-scroll" striped responsive>
+      <Table className="table-limit-scroll mt-3 table-sm" striped responsive>
         <thead>
           <tr
             className="title-simple"
@@ -71,6 +72,7 @@ export class Record extends Component {
             <th colSpan="2">Vento (km/h)</th>
             <th colSpan="1">Pressão</th>
             <th colSpan="1">Radiação Solar</th>
+            <th colSpan="1">Tempo Presente</th>
             <th colSpan="2">Usuário</th>
           </tr>
           <tr className="title-simple" align="center">
@@ -84,6 +86,7 @@ export class Record extends Component {
             <td>Direção</td>
             <td>hPa</td>
             <td>W/m²</td>
+            <td> </td>
             <td>Nome</td>
             <td>Matrícula</td>
           </tr>

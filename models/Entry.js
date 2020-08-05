@@ -60,6 +60,10 @@ const EntrySchema = new Schema({
     type: String,
     required: true,
   },
+  mat_usuario: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = Entry = mongoose.model("entry", EntrySchema);

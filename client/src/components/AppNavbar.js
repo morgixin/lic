@@ -54,7 +54,7 @@ class AppNavbar extends Component {
         <NavItem>
           <UncontrolledDropdown setActiveFromChild>
             <DropdownToggle className="nav-link" caret tag="a">
-              Atualizar
+              Opções
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem>
@@ -65,6 +65,11 @@ class AppNavbar extends Component {
               <DropdownItem disabled>
                 <Link className="nav-link" to="/editar">
                   Editar dados
+                </Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link className="nav-link" to="/relatorio">
+                  Relatório
                 </Link>
               </DropdownItem>
             </DropdownMenu>

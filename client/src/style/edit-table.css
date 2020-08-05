@@ -5,13 +5,15 @@
 
 .table-limit-scroll tbody {
   display: block;
-  max-height: 320px;
+  max-height: 280px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .table-limit-scroll thead,
 .table-limit-scroll tbody tr {
   display: table;
   width: 100%;
+  max-width: 100rem;
   table-layout: fixed;
 }

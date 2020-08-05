@@ -7,7 +7,7 @@ class StationInfo extends Component {
       <Container>
         <div className="sidebar ml-5">
           <div>
-            <p style={{ fontSize: "1.25rem" }}>Estação Ambiental Didática</p>
+            <h2 style={{ fontSize: "1.25rem" }}>Estação Ambiental Didática</h2>
           </div>
           <div className="sidebar-line">
             <div className="pt-3">

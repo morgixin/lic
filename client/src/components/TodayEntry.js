@@ -3,10 +3,6 @@ import {
   Jumbotron,
   Container,
   Table,
-  Button,
-  UncontrolledPopover,
-  PopoverHeader,
-  PopoverBody,
   DropdownToggle,
   UncontrolledDropdown,
   DropdownMenu,
@@ -28,7 +24,6 @@ export class TodayEntry extends Component {
 
   mainContent = () => {
     const { entries } = this.props.entry;
-    // console.log(entries);
 
     const todayEntry = entries
       .sort((a, b) => {

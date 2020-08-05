@@ -4,6 +4,20 @@
 @import url("style/sidebar.css");
 @import url("style/edit-table.css");
 
+h1,
+h2,
+th {
+  font: 500 1rem Poppins;
+  line-height: 1.8rem;
+}
+
+body,
+button,
+input {
+  font: 400 1rem Archivo;
+  line-height: 1.6rem;
+}
+
 .main-content {
   display: flex;
   flex-direction: row;
