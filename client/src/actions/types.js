@@ -4,6 +4,7 @@ export const ADD_ENTRY_FAIL = "ADD_ENTRY_FAIL";
 export const DELETE_ENTRY = "DELETE_ENTRY";
 export const ENTRIES_LOADING = "ENTRIES_LOADING";
 export const UPDATE_ENTRY = "UPDATE_ENTRY";
+export const UPDATE_ENTRY_FAIL = "UPDATE_ENTRY_FAIL";
 
 export const GET_USERS = "GET_USERS";
 export const USERS_LOADING = "USERS_LOADING";

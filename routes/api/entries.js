@@ -35,11 +35,9 @@ router.post("/", (req, res) => {
     direc_vento,
     tempo_presente,
     nome,
-    matricula,
   } = req.body;
 
   const nome_usuario = nome;
-  const mat_usuario = matricula;
 
   Entry.findOne({ hora_leitura }).then((isMatch) => {
     if (isMatch)
@@ -61,7 +59,6 @@ router.post("/", (req, res) => {
         direc_vento,
         tempo_presente,
         nome_usuario,
-        mat_usuario,
       });
       newEntry.save().then((entry) => res.json(entry));
     }
@@ -87,6 +84,7 @@ router.put("/:id", (req, res) => {
     chuva_ac_dia,
     inten_vento,
     direc_vento,
+    nome_usuario,
   } = req.body;
 
   Entry.findById(req.params.id).then((entry) => entry.update());

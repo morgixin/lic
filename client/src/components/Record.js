@@ -2,13 +2,30 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getEntries } from "../actions/obsActions";
-import { Table } from "reactstrap";
+import { Table, Button } from "reactstrap";
+import { Redirect, Link } from "react-router-dom";
+
+import editPic from "../assets/images/pencil.png";
 
 export class Record extends Component {
+  state = {
+    redirect: false,
+  };
+
   static propTypes = {
     getEntries: PropTypes.func.isRequired,
     entry: PropTypes.object.isRequired,
   };
+
+  redirectHandler = () => {
+    this.setState({ redirect: true });
+    this.renderRedirect();
+  };
+
+  renderRedirect() {
+    if (this.state.redirect)
+      return <Redirect exact to={{ pathname: "/editar/" }} />;
+  }
 
   componentDidMount() {
     this.props.getEntries();
@@ -27,6 +44,13 @@ export class Record extends Component {
       })
       .map((entry) => (
         <tr key={entry._id} align="center">
+          {/* <td>
+             <Button onClick={this.redirectHandler}>
+            <Link to={`/editar/${entry._id}`}>
+              <img src={editPic} style={{ height: "1rem" }} />
+            </Link>
+            </Button> 
+          </td>*/}
           <td>
             {new Intl.DateTimeFormat("pt-BR", {
               month: "2-digit",
@@ -59,41 +83,46 @@ export class Record extends Component {
 
   render() {
     return (
-      <Table className="table-limit-scroll mt-3 table-sm" striped responsive>
-        <thead>
-          <tr
-            className="title-simple"
-            align="center"
-            style={{ borderBottom: "1px solid lightgray" }}
-          >
-            <th colSpan="2">Data</th>
-            <th colSpan="2">Temperatura (ºC)</th>
-            <th colSpan="1">Umidade Relativa (%)</th>
-            <th colSpan="1">Chuva (mm)</th>
-            <th colSpan="2">Vento (km/h)</th>
-            <th colSpan="1">Pressão</th>
-            <th colSpan="1">Radiação Solar</th>
-            <th colSpan="1">Tempo Presente</th>
-            <th colSpan="1">Usuário</th>
-          </tr>
-          <tr className="title-simple" align="center">
-            <td>Dia</td>
-            <td>Hora</td>
-            <td>Máx</td>
-            <td>Mín</td>
-            <td>Mín</td>
-            <td>24h</td>
-            <td>Força</td>
-            <td>Direção</td>
-            <td>hPa</td>
-            <td>W/m²</td>
-            <td> </td>
-            <td>Nome</td>
-            {/* <td>Matrícula</td> */}
-          </tr>
-        </thead>
-        <tbody>{this.rows()}</tbody>
-      </Table>
+      <div>
+        <Table className="table-limit-scroll mt-3 table-sm" striped responsive>
+          <thead>
+            <tr
+              className="title-simple"
+              align="center"
+              style={{ borderBottom: "1px solid lightgray" }}
+            >
+              {/* <th colSpan="1"></th> */}
+              <th colSpan="2">Data</th>
+              <th colSpan="2">Temperatura (ºC)</th>
+              <th colSpan="1">Umidade Relativa (%)</th>
+              <th colSpan="1">Chuva (mm)</th>
+              <th colSpan="2">Vento (km/h)</th>
+              <th colSpan="1">Pressão</th>
+              <th colSpan="1">Radiação Solar</th>
+              <th colSpan="1">Tempo Presente</th>
+              <th colSpan="1">Usuário</th>
+            </tr>
+            <tr className="title-simple" align="center">
+              {/* <td> </td> */}
+              <td>Dia</td>
+              <td>Hora</td>
+              <td>Máx</td>
+              <td>Mín</td>
+              <td>Mín</td>
+              <td>24h</td>
+              <td>Força</td>
+              <td>Direção</td>
+              <td>hPa</td>
+              <td>W/m²</td>
+              <td> </td>
+              <td>Nome</td>
+              {/* <td>Matrícula</td> */}
+            </tr>
+          </thead>
+          <tbody>{this.rows()}</tbody>
+        </Table>
+        {this.renderRedirect()}
+      </div>
     );
   }
 }
