@@ -44,13 +44,13 @@ export class Record extends Component {
       })
       .map((entry) => (
         <tr key={entry._id} align="center">
-          {/* <td>
-             <Button onClick={this.redirectHandler}>
+          <td>
+            {/* <Button onClick={this.redirectHandler}> */}
             <Link to={`/editar/${entry._id}`}>
               <img src={editPic} style={{ height: "1rem" }} />
             </Link>
-            </Button> 
-          </td>*/}
+            {/* </Button> */}
+          </td>
           <td>
             {new Intl.DateTimeFormat("pt-BR", {
               month: "2-digit",
@@ -91,7 +91,7 @@ export class Record extends Component {
               align="center"
               style={{ borderBottom: "1px solid lightgray" }}
             >
-              {/* <th colSpan="1"></th> */}
+              <th colSpan="1"></th>
               <th colSpan="2">Data</th>
               <th colSpan="2">Temperatura (ºC)</th>
               <th colSpan="1">Umidade Relativa (%)</th>
@@ -103,7 +103,7 @@ export class Record extends Component {
               <th colSpan="1">Usuário</th>
             </tr>
             <tr className="title-simple" align="center">
-              {/* <td> </td> */}
+              <td> </td>
               <td>Dia</td>
               <td>Hora</td>
               <td>Máx</td>
