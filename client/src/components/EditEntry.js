@@ -16,7 +16,6 @@ import { Redirect } from "react-router-dom";
 
 class EditEntry extends Component {
   state = {
-    modal: false,
     msg: null,
     redirect: false,
     hora_leitura: new Date(),
@@ -31,44 +30,43 @@ class EditEntry extends Component {
     inten_vento: 0,
     direc_vento: "",
     tempo_presente: "",
+    num: 0,
   };
 
   static propTypes = {
     isAuthenticated: PropTypes.bool,
     entry: PropTypes.object.isRequired,
-    added: PropTypes.bool,
+    updated: PropTypes.bool,
     error: PropTypes.object.isRequired,
     getEntry: PropTypes.func.isRequired,
     updateEntry: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired,
   };
 
-  // Pega todas as entradas ao carregar a página
+  // Pega a entrada ao carregar a página
   componentDidMount() {
     this.props.getEntry(this.props.match.params.id);
-    this.setStateToProps();
   }
 
-  setStateToProps = () => {
-    if ((this.state.direc_vento = "" && this.state.pressao_atm === 0))
-      this.setState({
-        hora_leitura: this.props.entry.hora_leitura,
-        pressao_atm: this.props.entry.pressao_atm,
-        temp_ar: this.props.entry.temp_ar,
-        temp_min: this.props.entry.temp_min,
-        temp_max: this.props.entry.temp_max,
-        umid_rel: this.props.entry.umid_rel,
-        umid_min: this.props.entry.umid_min,
-        rad_solar: this.props.entry.rad_solar,
-        chuva_ac_dia: this.props.entry.chuva_ac_dia,
-        inten_vento: this.props.entry.inten_vento,
-        direc_vento: this.props.entry.direc_vento,
-        tempo_presente: this.props.entry.tempo_presente,
-      });
-  };
+  // setStateToProps = (entry) => {
+  //   this.setState({
+  //     hora_leitura: entry.hora_leitura,
+  //     pressao_atm: entry.pressao_atm,
+  //     temp_ar: entry.temp_ar,
+  //     temp_min: entry.temp_min,
+  //     temp_max: entry.temp_max,
+  //     umid_rel: entry.umid_rel,
+  //     umid_min: entry.umid_min,
+  //     rad_solar: entry.rad_solar,
+  //     chuva_ac_dia: entry.chuva_ac_dia,
+  //     inten_vento: entry.inten_vento,
+  //     direc_vento: entry.direc_vento,
+  //     tempo_presente: entry.tempo_presente,
+  //   });
+  // };
 
   componentDidUpdate(prevProps) {
-    const { error, added } = this.props;
+    const { error, updated } = this.props;
 
     if (error !== prevProps.error) {
       // Checa se houve algum erro no alterar
@@ -80,7 +78,7 @@ class EditEntry extends Component {
     }
 
     // retorna à Home Page se houver sucesso no alterar
-    if (added) {
+    if (updated) {
       this.redirectHandler();
     }
   }
@@ -101,6 +99,25 @@ class EditEntry extends Component {
   form = () => {
     const { entries } = this.props.entry;
 
+    if (this.state.num === 0 && entries._id === this.props.match.params.id) {
+      console.log(entries);
+      this.setState({
+        hora_leitura: entries.hora_leitura,
+        pressao_atm: entries.pressao_atm,
+        temp_ar: entries.temp_ar,
+        temp_min: entries.temp_min,
+        temp_max: entries.temp_max,
+        umid_rel: entries.umid_rel,
+        umid_min: entries.umid_min,
+        rad_solar: entries.rad_solar,
+        chuva_ac_dia: entries.chuva_ac_dia,
+        inten_vento: entries.inten_vento,
+        direc_vento: entries.direc_vento,
+        tempo_presente: entries.tempo_presente,
+      });
+      this.state.num = 1;
+    }
+
     return (
       <Form onSubmit={this.onSubmit.bind(this)} className="form-grid-4">
         <div className="item">
@@ -109,7 +126,7 @@ class EditEntry extends Component {
             name="hora_leitura"
             id="date-input"
             type="text"
-            defaultValue={entries.hora_leitura}
+            value={this.state.hora_leitura}
             onFocus={() =>
               (document.getElementById("date-input").type = "datetime-local")
             }
@@ -124,7 +141,7 @@ class EditEntry extends Component {
             type="text"
             name="pressao_atm"
             id="pressao-atm"
-            defaultValue={entries.pressao_atm}
+            value={this.state.pressao_atm}
             onChange={this.onChange}
             required
           />
@@ -137,7 +154,7 @@ class EditEntry extends Component {
               name="temp_ar"
               id="temp-ar"
               className="temperatura"
-              defaultValue={entries.temp_ar}
+              value={this.state.temp_ar}
               onChange={this.onChange}
               required
             />
@@ -146,7 +163,7 @@ class EditEntry extends Component {
               name="temp_min"
               id="temp-min"
               className="temperatura"
-              defaultValue={entries.temp_min}
+              value={this.state.temp_min}
               onChange={this.onChange}
               required
             />
@@ -155,7 +172,7 @@ class EditEntry extends Component {
               name="temp_max"
               id="temp-max"
               className="temperatura"
-              defaultValue={entries.temp_max}
+              value={this.state.temp_max}
               onChange={this.onChange}
               required
             />
@@ -167,7 +184,7 @@ class EditEntry extends Component {
             type="text"
             name="tempo_presente"
             id="tempo_presente"
-            defaultValue={entries.tempo_presente}
+            value={this.state.tempo_presente}
             onChange={this.onChange}
             required
           />
@@ -179,7 +196,7 @@ class EditEntry extends Component {
               type="text"
               name="umid_rel"
               id="umid-rel"
-              defaultValue={entries.umid_rel}
+              value={this.state.umid_rel}
               onChange={this.onChange}
               required
             />
@@ -187,7 +204,7 @@ class EditEntry extends Component {
               type="text"
               name="umid_min"
               id="umid-min"
-              defaultValue={entries.umid_min}
+              value={this.state.umid_min}
               onChange={this.onChange}
               required
             />
@@ -199,7 +216,7 @@ class EditEntry extends Component {
             type="text"
             name="rad_solar"
             id="rad-global"
-            defaultValue={entries.rad_solar}
+            value={this.state.rad_solar}
             onChange={this.onChange}
             required
           />
@@ -210,7 +227,7 @@ class EditEntry extends Component {
             type="text"
             name="chuva_ac_dia"
             id="ch-ac-dia"
-            defaultValue={entries.chuva_ac_dia}
+            value={this.state.chuva_ac_dia}
             onChange={this.onChange}
             required
           />
@@ -222,7 +239,7 @@ class EditEntry extends Component {
               type="text"
               name="inten_vento"
               id="vento-inten"
-              defaultValue={entries.inten_vento}
+              value={this.state.inten_vento}
               onChange={this.onChange}
               required
             />
@@ -233,8 +250,8 @@ class EditEntry extends Component {
               onChange={this.onChange}
               required
             >
-              <option value="direção" defaultValue hidden>
-                {entries.direc_vento}
+              <option value="direção" value hidden>
+                {this.state.direc_vento}
               </option>
               <option value="E">E: leste</option>
               <option value="N">N: norte</option>
@@ -304,6 +321,7 @@ class EditEntry extends Component {
       nome,
     };
 
+    console.log(newEntry);
     // Adiciona a entrada pelo addEntry
     if (isAuthenticated) this.props.updateEntry(newEntry);
   };
@@ -328,7 +346,7 @@ const mapStateToProps = (state) => ({
   entry: state.entry,
   error: state.error,
   isAuthenticated: state.auth.isAuthenticated,
-  added: state.entry.added,
+  updated: state.entry.updated,
   auth: state.auth,
 });
 

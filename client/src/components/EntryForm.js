@@ -12,11 +12,10 @@ import { connect } from "react-redux";
 import { addEntry } from "../actions/obsActions";
 import { clearErrors } from "../actions/errorActions";
 import PropTypes from "prop-types";
-import { useHistory, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class EntryForm extends Component {
   state = {
-    modal: false,
     hora_leitura: new Date(),
     pressao_atm: 0,
     temp_ar: 0,

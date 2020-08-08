@@ -16,7 +16,6 @@ import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   state = {
-    modal: false,
     apelido: "",
     senha: "",
     msg: null,
@@ -51,7 +50,7 @@ class Login extends Component {
       }
     }
 
-    // Se autenticado, fecha o modal
+    // Se autenticado, redireciona para página inicial
     if (isAuthenticated) {
       this.redirectHandler();
     }

@@ -3,15 +3,14 @@ const router = express.Router();
 
 // Modelo de observação
 const Entry = require("../../models/Entry");
-const { useCallback } = require("react");
 
 /**
  * @route   GET api/entries
  * @desc    Acessar Todas as Entradas
  * @access  Public
  */
-router.get("/", async (req, res) => {
-  await Entry.find()
+router.get("/", (req, res) => {
+  Entry.find()
     .sort({ hora_leitura: -1 })
     .then((entry) => res.json(entry));
 });
@@ -21,8 +20,8 @@ router.get("/", async (req, res) => {
  * @desc    Acessar Todas as Entradas
  * @access  Public
  */
-router.get("/:id", async (req, res) => {
-  await Entry.findById(req.params.id).then((entry) => res.json(entry));
+router.get("/:id", (req, res) => {
+  Entry.findById(req.params.id).then((entry) => res.json(entry));
 });
 
 /**
@@ -30,7 +29,7 @@ router.get("/:id", async (req, res) => {
  * @desc    Adicionar Nova Entrada
  * @access  Public
  */
-router.post("/", async (req, res) => {
+router.post("/", (req, res) => {
   const {
     hora_leitura,
     pressao_atm,
@@ -49,7 +48,7 @@ router.post("/", async (req, res) => {
 
   const nome_usuario = nome;
 
-  await Entry.findOne({ hora_leitura }).then((isMatch) => {
+  Entry.findOne({ hora_leitura }).then((isMatch) => {
     if (isMatch)
       return res
         .status(400)
@@ -81,7 +80,7 @@ router.post("/", async (req, res) => {
  * @access  Public
  */
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", (req, res) => {
   const {
     hora_leitura,
     pressao_atm,
@@ -97,24 +96,20 @@ router.put("/:id", async (req, res) => {
     nome_usuario,
   } = req.body;
 
-  try {
-    await Entry.updateOne(req.params._id, {
-      hora_leitura,
-      pressao_atm,
-      temp_ar,
-      temp_min,
-      temp_max,
-      umid_rel,
-      umid_min,
-      rad_solar,
-      chuva_ac_dia,
-      inten_vento,
-      direc_vento,
-      nome_usuario,
-    });
-  } catch (e) {
-    return res.status(400).json({ msg: "errr algo deu errado" });
-  }
+  Entry.updateOne(req.params._id, {
+    hora_leitura: hora_leitura,
+    pressao_atm: pressao_atm,
+    temp_ar: temp_ar,
+    temp_min: temp_min,
+    temp_max: temp_max,
+    umid_rel: umid_rel,
+    umid_min: umid_min,
+    rad_solar: rad_solar,
+    chuva_ac_dia: chuva_ac_dia,
+    inten_vento: inten_vento,
+    direc_vento: direc_vento,
+    nome_usuario: nome_usuario,
+  }).then((entry) => res.json(entry));
 });
 
 module.exports = router;
