@@ -3,9 +3,9 @@ import {
   GET_ENTRIES,
   GET_ENTRY,
   ADD_ENTRY,
+  ADD_ENTRY_FAIL,
   DELETE_ENTRY,
   ENTRIES_LOADING,
-  ADD_ENTRY_FAIL,
   UPDATE_ENTRY,
   UPDATE_ENTRY_FAIL,
 } from "../actions/types";
@@ -55,15 +55,13 @@ export const addEntry = (entry) => (dispatch, getState) => {
       dispatch(
         returnErrors(err.response.data, err.response.status, "ADD_ENTRY_FAIL")
       );
-      dispatch({
-        type: ADD_ENTRY_FAIL,
-      });
+      dispatch({ type: ADD_ENTRY_FAIL });
     });
 };
 
 export const updateEntry = (entry) => (dispatch, getState) => {
   axios
-    .put(`/api/entries/${entry.id}`, tokenConfig(getState))
+    .put(`/api/entries/${entry._id}`, entry, tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: UPDATE_ENTRY,
@@ -82,9 +80,9 @@ export const updateEntry = (entry) => (dispatch, getState) => {
     });
 };
 
-export const deleteEntry = (id) => (dispatch) => {
+export const deleteEntry = (id) => (dispatch, getState) => {
   axios
-    .delete(`/api/entries/${id}`)
+    .delete(`/api/entries/${id}`, tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: DELETE_ENTRY,

@@ -45,7 +45,7 @@ export default function (state = initialState, action) {
     case UPDATE_ENTRY_FAIL:
       return {
         ...state,
-        added: false,
+        updated: false,
       };
     case DELETE_ENTRY:
       return {

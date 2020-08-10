@@ -81,35 +81,24 @@ router.post("/", (req, res) => {
  */
 
 router.put("/:id", (req, res) => {
-  const {
-    hora_leitura,
-    pressao_atm,
-    temp_ar,
-    temp_min,
-    temp_max,
-    umid_rel,
-    umid_min,
-    rad_solar,
-    chuva_ac_dia,
-    inten_vento,
-    direc_vento,
-    nome_usuario,
-  } = req.body;
+  // const {
+  //   hora_leitura,
+  //   pressao_atm,
+  //   temp_ar,
+  //   temp_min,
+  //   temp_max,
+  //   umid_rel,
+  //   umid_min,
+  //   rad_solar,
+  //   chuva_ac_dia,
+  //   inten_vento,
+  //   direc_vento,
+  //   nome,
+  // } = req.body;
 
-  Entry.updateOne(req.params._id, {
-    hora_leitura: hora_leitura,
-    pressao_atm: pressao_atm,
-    temp_ar: temp_ar,
-    temp_min: temp_min,
-    temp_max: temp_max,
-    umid_rel: umid_rel,
-    umid_min: umid_min,
-    rad_solar: rad_solar,
-    chuva_ac_dia: chuva_ac_dia,
-    inten_vento: inten_vento,
-    direc_vento: direc_vento,
-    nome_usuario: nome_usuario,
-  }).then((entry) => res.json(entry));
+  Entry.updateOne({ id: req.params._id }, req.body).then((entry) =>
+    res.json(entry)
+  );
 });
 
 module.exports = router;

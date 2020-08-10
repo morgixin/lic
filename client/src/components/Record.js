@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getEntries } from "../actions/obsActions";
-import { Table, Button } from "reactstrap";
+import { Table } from "reactstrap";
 import { Redirect, Link } from "react-router-dom";
 
 import editPic from "../assets/images/pencil.png";
@@ -45,11 +45,9 @@ export class Record extends Component {
       .map((entry) => (
         <tr key={entry._id} align="center">
           <td>
-            {/* <Button onClick={this.redirectHandler}> */}
             <Link to={`/editar/${entry._id}`}>
-              <img src={editPic} style={{ height: "1rem" }} />
+              <img src={editPic} style={{ height: "1rem" }} alt="Editar" />
             </Link>
-            {/* </Button> */}
           </td>
           <td>
             {new Intl.DateTimeFormat("pt-BR", {

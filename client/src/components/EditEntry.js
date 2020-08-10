@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import {
   Button,
   Form,
@@ -8,11 +10,9 @@ import {
   Alert,
   Container,
 } from "reactstrap";
-import { connect } from "react-redux";
-import { updateEntry, getEntry, deleteEntry } from "../actions/obsActions";
-import { clearErrors } from "../actions/errorActions";
 import PropTypes from "prop-types";
-import { Redirect } from "react-router-dom";
+import { updateEntry, getEntry } from "../actions/obsActions";
+import { clearErrors } from "../actions/errorActions";
 
 class EditEntry extends Component {
   state = {
@@ -48,23 +48,6 @@ class EditEntry extends Component {
     this.props.getEntry(this.props.match.params.id);
   }
 
-  // setStateToProps = (entry) => {
-  //   this.setState({
-  //     hora_leitura: entry.hora_leitura,
-  //     pressao_atm: entry.pressao_atm,
-  //     temp_ar: entry.temp_ar,
-  //     temp_min: entry.temp_min,
-  //     temp_max: entry.temp_max,
-  //     umid_rel: entry.umid_rel,
-  //     umid_min: entry.umid_min,
-  //     rad_solar: entry.rad_solar,
-  //     chuva_ac_dia: entry.chuva_ac_dia,
-  //     inten_vento: entry.inten_vento,
-  //     direc_vento: entry.direc_vento,
-  //     tempo_presente: entry.tempo_presente,
-  //   });
-  // };
-
   componentDidUpdate(prevProps) {
     const { error, updated } = this.props;
 
@@ -96,11 +79,10 @@ class EditEntry extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  form = () => {
+  setStateToProps = () => {
     const { entries } = this.props.entry;
 
     if (this.state.num === 0 && entries._id === this.props.match.params.id) {
-      console.log(entries);
       this.setState({
         hora_leitura: entries.hora_leitura,
         pressao_atm: entries.pressao_atm,
@@ -114,12 +96,16 @@ class EditEntry extends Component {
         inten_vento: entries.inten_vento,
         direc_vento: entries.direc_vento,
         tempo_presente: entries.tempo_presente,
+        num: 1,
       });
-      this.state.num = 1;
     }
+  };
+
+  form = () => {
+    this.setStateToProps();
 
     return (
-      <Form onSubmit={this.onSubmit.bind(this)} className="form-grid-4">
+      <Form onSubmit={this.onSubmit} className="form-grid-4">
         <div className="item">
           <Label className="lead">Horário local da leitura</Label>
           <Input
@@ -248,9 +234,10 @@ class EditEntry extends Component {
               name="direc_vento"
               id="vento-dir"
               onChange={this.onChange}
+              defaultValue={this.state.direc_vento}
               required
             >
-              <option value="direção" value hidden>
+              <option value={this.state.direc_vento} hidden>
                 {this.state.direc_vento}
               </option>
               <option value="E">E: leste</option>
