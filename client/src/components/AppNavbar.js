@@ -62,11 +62,6 @@ class AppNavbar extends Component {
                   Inserir dados
                 </Link>
               </DropdownItem>
-              <DropdownItem disabled>
-                <Link className="nav-link" to="/editar">
-                  Editar dados
-                </Link>
-              </DropdownItem>
               <DropdownItem>
                 <Link className="nav-link" to="/relatorio">
                   Relatório
